@@ -8,22 +8,24 @@ organizers can update `docs/assets/leaderboard.json` from scoring results.
     <strong>AI Explainability Trail</strong>
     <span>Scores come from deterministic GitHub Actions runs.</span>
   </div>
-  <table id="scoreboard-table">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Participant</th>
-        <th>Score</th>
-        <th>Tier</th>
-        <th>Last Update</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="5">Loading scoreboard...</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="scoreboard-table-wrap">
+    <table id="scoreboard-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Participant</th>
+          <th>Score</th>
+          <th>Tier</th>
+          <th>Last Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="5">Loading scoreboard...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script src="../assets/scoreboard.js"></script>

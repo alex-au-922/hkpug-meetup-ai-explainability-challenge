@@ -1,15 +1,27 @@
 :root {
+  --md-primary-fg-color: #2f756c;
+  --md-primary-fg-color--dark: #245e57;
+  --md-accent-fg-color: #c85f38;
   --hkpug-ink: #172126;
-  --hkpug-teal: #007c7a;
-  --hkpug-orange: #f0642f;
-  --hkpug-mint: #d9f3ea;
-  --hkpug-paper: #fbfcfa;
+  --hkpug-muted: #66757a;
+  --hkpug-line: #dce6e2;
+  --hkpug-teal: #2f756c;
+  --hkpug-orange: #c85f38;
+  --hkpug-mint: #edf7f4;
+  --hkpug-paper: #f8faf8;
+  --hkpug-surface: #ffffff;
 }
 
 .md-main {
-  background:
-    linear-gradient(180deg, rgba(217, 243, 234, 0.42), rgba(255, 255, 255, 0) 260px),
-    var(--hkpug-paper);
+  background: var(--hkpug-paper);
+}
+
+.md-header {
+  box-shadow: 0 1px 0 rgba(23, 33, 38, 0.12);
+}
+
+.md-search__form {
+  border-radius: 4px;
 }
 
 .md-typeset h1 {
@@ -25,47 +37,187 @@
 .md-typeset table:not([class]) {
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(23, 33, 38, 0.08);
 }
 
 .md-typeset code {
+  background: #eef3f2;
+  border: 1px solid #dce6e2;
   border-radius: 5px;
 }
 
 .scoreboard-panel {
-  border: 1px solid rgba(0, 124, 122, 0.2);
+  max-width: 58rem;
+  margin-top: 1.25rem;
+  border: 1px solid var(--hkpug-line);
   border-radius: 8px;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--hkpug-surface);
+  box-shadow: 0 1px 2px rgba(23, 33, 38, 0.05);
 }
 
 .scoreboard-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px;
-  background: var(--hkpug-mint);
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--hkpug-line);
+  background: #f4f8f6;
   color: var(--hkpug-ink);
+}
+
+.scoreboard-header strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scoreboard-header strong::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--hkpug-orange);
+  content: "";
 }
 
 .scoreboard-header span,
 #scoreboard-table span {
-  color: #5b6b70;
+  color: var(--hkpug-muted);
   font-size: 0.85em;
+}
+
+.scoreboard-table-wrap {
+  overflow-x: auto;
+}
+
+.scoreboard-table-wrap .md-typeset__scrollwrap {
+  width: 100%;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.scoreboard-table-wrap .md-typeset__table {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.md-typeset #scoreboard-table:not([class]) {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #scoreboard-table {
   width: 100%;
   border-collapse: collapse;
+  background: var(--hkpug-surface);
 }
 
 #scoreboard-table th,
 #scoreboard-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #e6ecec;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e8eeee;
   text-align: left;
+  vertical-align: top;
 }
 
 #scoreboard-table th {
-  background: #f6faf9;
+  background: #fbfcfc;
   color: #34464c;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+#scoreboard-table tr:last-child td {
+  border-bottom: 0;
+}
+
+#scoreboard-table td:nth-child(3),
+#scoreboard-table td:nth-child(4),
+#scoreboard-table td:nth-child(5) {
+  white-space: nowrap;
+}
+
+#scoreboard-table span {
+  display: block;
+  margin-top: 4px;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .scoreboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .scoreboard-table-wrap,
+  .scoreboard-table-wrap .md-typeset__scrollwrap,
+  .scoreboard-table-wrap .md-typeset__table {
+    overflow: visible;
+  }
+
+  .md-typeset #scoreboard-table:not([class]),
+  #scoreboard-table,
+  #scoreboard-table thead,
+  #scoreboard-table tbody,
+  #scoreboard-table tr,
+  #scoreboard-table td {
+    display: block;
+    width: 100%;
+  }
+
+  #scoreboard-table thead {
+    display: none;
+  }
+
+  #scoreboard-table tr {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e8eeee;
+  }
+
+  #scoreboard-table tr:last-child {
+    border-bottom: 0;
+  }
+
+  #scoreboard-table th,
+  #scoreboard-table td {
+    padding: 6px 0;
+    border-bottom: 0;
+    white-space: normal;
+  }
+
+  #scoreboard-table td {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  #scoreboard-table td::before {
+    color: #34464c;
+    font-weight: 700;
+  }
+
+  #scoreboard-table td:nth-child(1)::before {
+    content: "Rank";
+  }
+
+  #scoreboard-table td:nth-child(2)::before {
+    content: "Participant";
+  }
+
+  #scoreboard-table td:nth-child(3)::before {
+    content: "Score";
+  }
+
+  #scoreboard-table td:nth-child(4)::before {
+    content: "Tier";
+  }
+
+  #scoreboard-table td:nth-child(5)::before {
+    content: "Last Update";
+  }
 }
