@@ -1,44 +1,83 @@
-# SHAP For Humans
+# Chapter 1: SHAP For Humans
 
-SHAP is a way to explain a model prediction.
+SHAP is a method for explaining a model prediction. In this challenge, we use it
+to answer a simple question:
 
-If the model says:
+> Which input features pushed this prediction up, and which pushed it down?
 
-> This loan applicant is high risk.
+That sentence is the most important thing in this chapter. If you remember only
+one idea, remember that SHAP is about assigning contribution. It does not merely
+say "this feature exists" or "this feature is correlated." It tries to describe
+how much each feature contributed to the model output for a particular
+prediction.
 
-SHAP helps you answer:
+## 1.1 Why Explain A Prediction?
 
-> Which facts pushed the model toward high risk, and which facts pushed it back
-> down?
+Imagine a loan-risk model predicts that an applicant has a high chance of late
+repayment. A human reviewer may ask:
 
-## The Restaurant Bill Mental Model
+- Was the model worried about previous late payments?
+- Was the model worried about high credit utilization?
+- Did stable income reduce the risk?
+- Did the model use a feature that should not be available?
 
-Imagine four friends share a dinner bill.
+Without an explanation, the prediction is just a number. With an explanation, we
+can inspect the reasons behind the number. This does not automatically make the
+model fair, correct, or trustworthy, but it gives us something concrete to
+review.
 
-The total bill is the model prediction. The friends are the features. SHAP asks:
+In real work, SHAP can help with several jobs:
 
-> How much did each friend contribute to the final bill?
-
-For a model, the "friends" are things like:
-
-- late payments
-- credit utilization
-- income stability
-- employment history
-
-Each feature gets a contribution.
-
-## Positive And Negative SHAP Values
-
-For this challenge:
-
-| SHAP sign | Meaning |
+| Job | Question |
 |---|---|
-| Positive value | Pushes risk up |
-| Negative value | Pushes risk down |
-| Near zero | Barely matters for this prediction |
+| Debugging | Why did the model make a surprising prediction? |
+| Model review | Which features matter most across many examples? |
+| Communication | How do we explain a prediction to a non-ML teammate? |
+| Risk control | Is the model relying on a suspicious shortcut? |
 
-Example:
+## 1.2 Vocabulary
+
+Before reading the artifact, learn these words.
+
+| Term | Meaning in this tutorial |
+|---|---|
+| Model | A function that turns input data into a prediction |
+| Feature | One input column, such as `late_payments` |
+| Prediction | The model's output for one row |
+| Base value | The model's starting point before row-specific features push it |
+| SHAP value | A feature's contribution to the prediction |
+| Positive SHAP value | Pushes the prediction upward |
+| Negative SHAP value | Pushes the prediction downward |
+
+For the loan-risk example, "upward" means "toward higher risk" and "downward"
+means "toward lower risk." In another model, upward might mean something else,
+such as a higher house price or a higher probability of churn. Always ask what
+the model output means before interpreting the sign.
+
+## 1.3 The Restaurant Bill Mental Model
+
+Imagine four friends share a dinner bill. The final bill is HKD 800. You want to
+know how much each friend contributed to that total.
+
+For a model, the "bill" is the final prediction. The "friends" are the input
+features. SHAP asks:
+
+> If this prediction is the final total, how much credit or blame should each
+> feature receive?
+
+In the toy loan model, the features are things like:
+
+- `late_payments`
+- `credit_utilization`
+- `stable_income`
+- `employment_months`
+
+Each feature receives a contribution. A positive contribution pushes the risk
+score up. A negative contribution pulls it down.
+
+## 1.4 Worked Example: Local Explanation
+
+The artifact contains this simplified explanation for case `C-104`:
 
 ```text
 base risk: 0.32
@@ -49,12 +88,30 @@ employment_months: -0.06
 final risk: about 0.59
 ```
 
-Read it as:
+Read it slowly.
 
-> The model started around 0.32. Late payments and credit utilization pushed the
-> score up. Stable income and employment history pushed it down. The up-push won.
+The model starts from a base risk of `0.32`. That does not mean every person has
+exactly that risk. It is the reference point for this explanation. Then the
+features for this specific row move the prediction.
 
-## Global vs Local
+`late_payments` contributes `+0.24`, so it pushes the risk score up.
+`credit_utilization` contributes `+0.18`, so it also pushes the risk score up.
+`stable_income` contributes `-0.09`, so it pushes the risk score down.
+`employment_months` contributes `-0.06`, so it also pushes the risk score down.
+
+A plain-English explanation would be:
+
+> The model started around 0.32. Two late payments and high credit utilization
+> pushed the risk score upward. Stable income and a longer employment history
+> pushed it downward, but the upward forces were larger, so the final prediction
+> crossed into the risky side.
+
+That is the style of explanation we want in the missions. Do not merely copy
+numbers. Explain the direction and the conclusion.
+
+## 1.5 Global vs Local SHAP
+
+There are two common ways to use SHAP.
 
 Global SHAP asks:
 
@@ -64,35 +121,94 @@ Local SHAP asks:
 
 > For this one row, why did the model make this one prediction?
 
-Do not mix them up. A feature can be globally important but not matter much for
-one specific person.
+These are related, but they are not the same. A feature can be globally
+important but barely matter for one specific row. A feature can also be modest on
+average but extremely important for one unusual row.
 
-## The Big Trap
+| Explanation type | Unit of analysis | Good for |
+|---|---|---|
+| Global | Many rows | Understanding model behavior overall |
+| Local | One row | Explaining one prediction |
 
-SHAP can tell you what the model used. It does not automatically tell you
-whether the model should have used it.
+In the challenge artifact, the `global_summary` section lists
+`mean_abs_shap`. This means "average absolute SHAP value." It ignores whether a
+feature pushed up or down and asks only how strongly the feature usually moved
+predictions. A larger value means the feature usually has a larger effect.
 
-If a feature is only known after the decision, it can be data leakage.
+## 1.6 The Important Trap: Explanation Is Not Approval
 
-Example:
+SHAP can tell you what the model used. It cannot automatically tell you whether
+the model should have used it.
+
+That distinction is essential.
+
+Suppose a feature named `post_approval_call_count` has a visible SHAP value. At
+first, that might look useful. But the name says the count happens after loan
+approval. If the model is deciding whether to approve the loan, it cannot
+honestly know the number of post-approval calls yet.
+
+That is data leakage.
+
+Data leakage means the model is using information that would not be available at
+prediction time. A leaked feature can make a model look strong during testing
+while making it useless or unsafe in real use.
+
+When SHAP highlights a suspicious feature, do not celebrate immediately. Ask:
+
+1. Was this feature available at the time of decision?
+2. Is this feature a proxy for the answer we are trying to predict?
+3. Would a human reviewer consider this reason legitimate?
+4. Would the model still work if this feature were removed?
+
+## 1.7 How To Read The Challenge Artifact
+
+Open:
 
 ```text
-post_approval_call_count
+labs/artifacts/loan_risk_casebook.json
 ```
 
-If the model is making an approval decision, it cannot honestly know what
-happens after approval. A high SHAP value on that feature is not a miracle. It
-is a warning light.
+The artifact has three important sections.
 
-## Beginner Checklist
+| Section | What to read |
+|---|---|
+| `global_summary` | Which features usually matter most |
+| `local_cases` | Why one specific prediction happened |
+| `known_trap` | A feature that teaches the data leakage warning |
 
-When you read a SHAP artifact, ask:
+For the global missions, sort by `mean_abs_shap`. For the local missions, look
+inside one case and separate positive and negative SHAP values. For the leakage
+mission, read the feature timing carefully.
 
-1. What is the model predicting?
-2. What is the base score?
-3. Which features push the score up?
-4. Which features push the score down?
-5. Is any feature suspicious because it would not be known at decision time?
+## 1.8 Common Misunderstandings
+
+**Misunderstanding 1: The biggest global feature explains every row.**
+
+Not always. Global importance is an average. Local explanations can differ.
+
+**Misunderstanding 2: Positive means good and negative means bad.**
+
+No. Positive means "pushes the model output upward." You must know what the
+model output represents.
+
+**Misunderstanding 3: SHAP proves causality.**
+
+No. SHAP explains the model's behavior. It does not prove that changing a
+feature will cause the real world to change.
+
+**Misunderstanding 4: If SHAP can explain it, the model is safe.**
+
+No. A clear explanation can reveal an unsafe shortcut.
+
+## 1.9 Review Questions
+
+Before starting the SHAP missions, check whether you can answer these:
+
+1. What is the difference between a feature and a prediction?
+2. What does a positive SHAP value mean in the loan-risk artifact?
+3. Why can a feature be globally important but locally unimportant?
+4. Why is `post_approval_call_count` suspicious?
+5. What should you write in plain English after reading SHAP values?
 
 ## Source
 

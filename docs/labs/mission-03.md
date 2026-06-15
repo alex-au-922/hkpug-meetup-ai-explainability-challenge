@@ -1,9 +1,13 @@
 # Mission 03: Explain One Wrong Prediction
 
-## Goal
+## Learning Objective
 
-Explain why case `C-104` was predicted as risky even though the real label says
-the person paid on time.
+This mission teaches local explanation. Instead of asking which features matter
+on average, you explain one specific prediction.
+
+The case is intentionally interesting: the model predicted risk, but the actual
+label says the person paid on time. Your job is not to defend the model. Your
+job is to explain why the model behaved that way.
 
 ## Artifact
 
@@ -17,7 +21,7 @@ Open:
 local_cases -> case_id C-104
 ```
 
-## What To Notice
+## Background
 
 For this challenge:
 
@@ -25,6 +29,27 @@ For this challenge:
 - negative SHAP values push risk down
 
 Do not just list every field. Say which forces won.
+
+The phrase "forces won" is useful because local SHAP is a push-and-pull story.
+Some features push the score upward. Other features pull it downward. The final
+prediction depends on the combined movement.
+
+## Guided Reading
+
+Inside case `C-104`, find the `shap_values` list. For each feature, read:
+
+- the feature name
+- the SHAP value
+- the direction label
+
+Then group the features into two buckets:
+
+| Bucket | Meaning |
+|---|---|
+| `pushes_risk_up` | Features that made the model more worried |
+| `pushes_risk_down` | Features that made the model less worried |
+
+Your explanation should mention both buckets.
 
 ## Submit
 

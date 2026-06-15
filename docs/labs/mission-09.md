@@ -1,8 +1,10 @@
 # Mission 09: Safe Evidence Boundary
 
-## Goal
+## Learning Objective
 
-Show that you know what is safe to submit and what must stay private.
+This mission teaches safe evidence handling. Observability is powerful because
+it gives teams visibility into real requests. That same visibility can expose
+private information if people are careless.
 
 ## Artifact
 
@@ -16,10 +18,26 @@ Open:
 safe_boundary
 ```
 
-## What To Notice
+## Background
 
 Real observability data can contain sensitive information. In this challenge,
 you only submit redacted toy evidence.
+
+In a real project, traces may include user messages, retrieved document text,
+tool arguments, internal URLs, or metadata. A public workshop repository should
+not contain any of that. For this challenge, the safe evidence is already
+provided in toy JSON files.
+
+## Guided Reading
+
+Open the `safe_boundary` section. It names what is allowed and what is
+forbidden. Your answer should show that you understand both sides:
+
+- what kind of artifact is safe to submit
+- what kind of artifact must never be submitted
+
+The evidence sentence should explain why the scoring repo does not need real
+secrets.
 
 ## Submit
 

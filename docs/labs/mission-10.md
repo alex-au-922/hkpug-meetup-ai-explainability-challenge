@@ -1,8 +1,14 @@
 # Mission 10: Capstone AI Incident Report
 
-## Goal
+## Learning Objective
 
-Write a short incident report that combines the SHAP and Opik lessons.
+This capstone checks whether you can combine both halves of the tutorial. You
+should be able to talk about SHAP without confusing it with Opik, and talk about
+Opik without pretending it explains feature contributions.
+
+The final answer should read like a small incident report. A teammate should be
+able to read it and understand what happened, what evidence supports your
+diagnosis, and what the next action should be.
 
 ## Artifacts
 
@@ -11,7 +17,7 @@ labs/artifacts/loan_risk_casebook.json
 labs/artifacts/support_bot_traces.json
 ```
 
-## What To Notice
+## Background
 
 The two tools answer different debugging questions:
 
@@ -19,6 +25,23 @@ The two tools answer different debugging questions:
 - Opik: which step in the AI app produced bad behavior?
 
 Your capstone should not pretend they are the same thing.
+
+The capstone does not require a long essay. It requires clear separation:
+
+| Part | Include |
+|---|---|
+| Incident type | A short category such as retrieval context mismatch |
+| SHAP lesson | One sentence about feature contribution |
+| Opik lesson | One sentence about traces or evaluation |
+| Next action | One concrete thing the team should do |
+| Evidence | A short paragraph tying the artifacts together |
+
+## Guided Writing
+
+Use exact names from the artifacts. Mention at least one SHAP feature, such as
+`late_payments` or `credit_utilization`, and at least one trace, such as
+`trace-003`. The report should make it obvious that you read the artifacts
+rather than guessing from the mission title.
 
 ## Submit
 

@@ -1,11 +1,18 @@
 # Missions
 
-The missions are small on purpose. Each one trains one habit:
+The missions are the practice section of this textbook. Each one asks you to
+apply a concept from the SHAP or Opik chapters to a small artifact.
 
-- inspect the artifact
-- make a claim
-- point to evidence
-- submit JSON
+The missions are intentionally narrow. A beginner should not need to search the
+web for every term. The point is to build a reliable reading habit:
+
+1. Identify the question being asked.
+2. Find the relevant artifact section.
+3. Make one claim.
+4. Support the claim with evidence.
+5. Submit the answer in a predictable JSON format.
+
+## The Artifacts
 
 The artifacts live in:
 
@@ -14,22 +21,60 @@ labs/artifacts/loan_risk_casebook.json
 labs/artifacts/support_bot_traces.json
 ```
 
+The first artifact teaches SHAP-style thinking. The second artifact teaches
+Opik-style thinking.
+
+| Artifact | Use it when the mission asks about |
+|---|---|
+| `loan_risk_casebook.json` | model predictions, feature contributions, global SHAP, local SHAP, data leakage |
+| `support_bot_traces.json` | traces, retrieval failures, evaluator scores, datasets, safe evidence |
+
 ## Mission List
 
-| Mission | Topic | Artifact |
+| Mission | Topic | What you practice |
 |---|---|---|
-| 01 | SHAP vs Opik | Tutorial pages |
-| 02 | Global SHAP | `loan_risk_casebook.json` |
-| 03 | Local SHAP | `loan_risk_casebook.json` |
-| 04 | Data leakage trap | `loan_risk_casebook.json` |
-| 05 | Model incident note | `loan_risk_casebook.json` |
-| 06 | Opik trace reading | `support_bot_traces.json` |
-| 07 | Evaluation dataset | `support_bot_traces.json` |
-| 08 | Before/after traces | `support_bot_traces.json` |
-| 09 | Safe boundary | `support_bot_traces.json` |
-| 10 | Capstone incident report | Both artifacts |
+| 01 | SHAP vs Opik | Separating model explanation from app observability |
+| 02 | Global SHAP | Reading average feature importance |
+| 03 | Local SHAP | Explaining one wrong prediction |
+| 04 | Data leakage trap | Recognizing a suspicious feature |
+| 05 | Model incident note | Turning an explanation into an action plan |
+| 06 | Opik trace reading | Finding the broken step in an AI request |
+| 07 | Evaluation dataset | Turning a failure into a repeatable test |
+| 08 | Before/after traces | Comparing evidence before and after a fix |
+| 09 | Safe boundary | Submitting useful evidence without leaking secrets |
+| 10 | Capstone incident report | Combining SHAP and Opik lessons |
+
+## How To Write A Good Answer
+
+A weak answer says:
+
+> The model used late payments.
+
+A stronger answer says:
+
+> In case `C-104`, `late_payments` has a positive SHAP value, so it pushed the
+> risk score upward. `stable_income` has a negative SHAP value, so it pushed the
+> score downward. The upward contributions were larger, so the model predicted
+> higher risk.
+
+The second answer is better because it explains direction, evidence, and
+conclusion.
+
+For Opik missions, a weak answer says:
+
+> The bot was wrong.
+
+A stronger answer says:
+
+> `trace-003` failed at retrieval. The user asked about typhoon refunds, but the
+> retriever returned Wi-Fi policy context. The low `context_relevance` score
+> supports the diagnosis.
+
+Again, the stronger answer names the broken step and cites evidence.
 
 ## Submission Tip
 
 Use your own words. The scorer checks for evidence, but the real point is that
-another human can understand your reasoning.
+another human can understand your reasoning. If your answer would not help a
+teammate debug the system, add one more sentence explaining why the evidence
+matters.

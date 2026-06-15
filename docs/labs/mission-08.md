@@ -1,8 +1,10 @@
 # Mission 08: Compare Before And After Traces
 
-## Goal
+## Learning Objective
 
-Compare the bad trace with the improved trace.
+This mission teaches evidence-based comparison. In AI work, it is easy to say a
+change "feels better." This mission asks you to prove improvement with a before
+trace, an after trace, and a score movement.
 
 ## Artifact
 
@@ -17,10 +19,28 @@ trace-003
 trace-004
 ```
 
-## What To Notice
+## Background
 
 Do not say "it got better" without evidence. Use the changed component and the
 score movement.
+
+For this artifact, the interesting comparison is `trace-003` versus
+`trace-004`. The user question is the same, but the retrieval behavior changes.
+That lets you compare the system before and after a fix.
+
+## Guided Reading
+
+Read the two traces side by side:
+
+| Compare | Before | After |
+|---|---|---|
+| Trace ID | `trace-003` | `trace-004` |
+| Retrieval topic | Wrong context | Event-policy context |
+| Context relevance | Low | High |
+| Final answer | Wrong topic | Related to weather policy |
+
+Your answer should name both trace IDs, the changed component, and the metric
+improvement.
 
 ## Submit
 
