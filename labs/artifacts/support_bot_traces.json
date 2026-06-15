@@ -1,0 +1,76 @@
+{
+  "project": "toy_event_support_bot",
+  "plain_english": "A trace is the receipt for one AI request. It shows the user input, retrieval, prompt, model output, evaluator scores, and timing.",
+  "traces": [
+    {
+      "trace_id": "trace-001",
+      "user_input": "Where is the HKPUG workshop?",
+      "final_answer": "The workshop is at the community classroom listed on the event page.",
+      "scores": {
+        "context_relevance": 0.94,
+        "answer_correctness": 0.91
+      },
+      "spans": [
+        {
+          "name": "retrieval",
+          "status": "ok",
+          "output": "venue page, address block, public transport notes"
+        },
+        {
+          "name": "llm_call",
+          "status": "ok",
+          "output": "answered with the venue summary"
+        }
+      ]
+    },
+    {
+      "trace_id": "trace-003",
+      "user_input": "If typhoon signal 8 happens, can I get a refund?",
+      "final_answer": "You can ask the venue staff for the Wi-Fi password at the front desk.",
+      "scores": {
+        "context_relevance": 0.22,
+        "answer_correctness": 0.08
+      },
+      "spans": [
+        {
+          "name": "retrieval",
+          "status": "bad_context",
+          "output": "venue wifi policy, check-in desk note, projector setup guide"
+        },
+        {
+          "name": "llm_call",
+          "status": "bad_answer",
+          "output": "answered a Wi-Fi question instead of the typhoon refund question"
+        }
+      ],
+      "diagnosis": "retrieval returned irrelevant context, so the model answered the wrong question",
+      "dataset_item": "weather-refund-policy"
+    },
+    {
+      "trace_id": "trace-004",
+      "user_input": "If typhoon signal 8 happens, can I get a refund?",
+      "final_answer": "The event page says weather cancellation and refund handling will follow the HKPUG notice posted before the event.",
+      "scores": {
+        "context_relevance": 0.91,
+        "answer_correctness": 0.86
+      },
+      "spans": [
+        {
+          "name": "retrieval",
+          "status": "ok",
+          "output": "weather policy, cancellation notice policy, refund handling note"
+        },
+        {
+          "name": "llm_call",
+          "status": "ok",
+          "output": "answered with weather policy context"
+        }
+      ],
+      "fix": "The retriever was routed to the event-policy collection before general venue documents."
+    }
+  ],
+  "safe_boundary": {
+    "allowed": "Submit redacted trace IDs, evaluator scores, and plain-English diagnosis.",
+    "forbidden": "Do not submit API keys, private user messages, access tokens, credentials, or personal data."
+  }
+}

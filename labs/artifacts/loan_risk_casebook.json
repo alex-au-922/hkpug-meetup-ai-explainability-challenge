@@ -1,0 +1,102 @@
+{
+  "model_name": "toy_loan_risk_model",
+  "target": "late_repayment_risk",
+  "plain_english": "A positive SHAP value pushes the risk score up. A negative SHAP value pushes the risk score down.",
+  "global_summary": [
+    {
+      "feature": "late_payments",
+      "mean_abs_shap": 0.31,
+      "plain_english": "Past late payments are the strongest average driver of risk."
+    },
+    {
+      "feature": "credit_utilization",
+      "mean_abs_shap": 0.24,
+      "plain_english": "Using most of the available credit usually pushes risk up."
+    },
+    {
+      "feature": "stable_income",
+      "mean_abs_shap": 0.17,
+      "plain_english": "Stable income often pushes risk down."
+    },
+    {
+      "feature": "employment_months",
+      "mean_abs_shap": 0.11,
+      "plain_english": "Longer employment history often pushes risk down."
+    },
+    {
+      "feature": "post_approval_call_count",
+      "mean_abs_shap": 0.09,
+      "plain_english": "Suspicious feature. It is only known after the loan decision."
+    }
+  ],
+  "local_cases": [
+    {
+      "case_id": "C-104",
+      "actual_label": "paid_on_time",
+      "model_prediction": "late_repayment_risk",
+      "base_probability": 0.32,
+      "predicted_probability": 0.59,
+      "shap_values": [
+        {
+          "feature": "late_payments",
+          "value": 2,
+          "shap": 0.24,
+          "direction": "pushes_risk_up"
+        },
+        {
+          "feature": "credit_utilization",
+          "value": 0.91,
+          "shap": 0.18,
+          "direction": "pushes_risk_up"
+        },
+        {
+          "feature": "stable_income",
+          "value": true,
+          "shap": -0.09,
+          "direction": "pushes_risk_down"
+        },
+        {
+          "feature": "employment_months",
+          "value": 39,
+          "shap": -0.06,
+          "direction": "pushes_risk_down"
+        }
+      ],
+      "plain_english": "The model was wrong here. It overreacted to two late payments and high credit utilization, even though stable income and employment history lowered the risk."
+    },
+    {
+      "case_id": "C-219",
+      "actual_label": "late_repayment",
+      "model_prediction": "late_repayment_risk",
+      "base_probability": 0.32,
+      "predicted_probability": 0.74,
+      "shap_values": [
+        {
+          "feature": "late_payments",
+          "value": 4,
+          "shap": 0.34,
+          "direction": "pushes_risk_up"
+        },
+        {
+          "feature": "credit_utilization",
+          "value": 0.87,
+          "shap": 0.16,
+          "direction": "pushes_risk_up"
+        },
+        {
+          "feature": "stable_income",
+          "value": false,
+          "shap": 0.08,
+          "direction": "pushes_risk_up"
+        }
+      ],
+      "plain_english": "The model and reality agree. The explanation is still useful because it tells a human which facts mattered."
+    }
+  ],
+  "known_trap": {
+    "feature": "post_approval_call_count",
+    "trap_type": "data_leakage",
+    "why_bad": "This count only exists after a loan decision and follow-up process. If the model uses it during approval, it is peeking into the future.",
+    "safe_fix": "Remove the feature, retrain, and audit all features for decision-time availability."
+  }
+}

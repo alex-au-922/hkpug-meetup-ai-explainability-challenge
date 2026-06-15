@@ -1,0 +1,11 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-04",
+  "answer": {
+    "suspicious_feature": "post_approval_call_count",
+    "trap_type": "data leakage from future data"
+  },
+  "evidence": [
+    "post_approval_call_count is suspicious because it is only known after the approval decision, so the model would be peeking into future process data."
+  ]
+}

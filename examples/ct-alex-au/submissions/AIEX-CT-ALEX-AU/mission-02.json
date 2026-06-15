@@ -1,0 +1,12 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-02",
+  "answer": {
+    "top_global_feature": "late_payments",
+    "second_global_feature": "credit_utilization"
+  },
+  "evidence": [
+    "In the global summary, late_payments has the largest mean absolute SHAP value at 0.31, so it is the tallest average driver.",
+    "credit_utilization has the next largest bar/value at 0.24, making it the second strongest global feature."
+  ]
+}

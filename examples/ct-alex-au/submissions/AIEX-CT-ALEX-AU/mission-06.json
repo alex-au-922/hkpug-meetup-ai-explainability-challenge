@@ -1,0 +1,12 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-06",
+  "answer": {
+    "failing_trace_id": "trace-003",
+    "bad_step": "retrieval",
+    "failed_metric": "context_relevance"
+  },
+  "evidence": [
+    "trace-003 has wrong context because retrieval returned venue Wi-Fi policy for a typhoon refund question, then the model answered about Wi-Fi."
+  ]
+}

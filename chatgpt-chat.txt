@@ -1,0 +1,1554 @@
+ChatGPT
+
+
+
+
+
+
+can you help me take a look what Tarun wants for HKPUG meetup on July and how can we support this workshop afterwards?
+
+Alex Au — 昨天 凌晨12:32
+This rubbish thing: https://contineo.link/, like a B2B Interactive Brooker (stock trade platform) for options
+anyway I think my side hustle (pycon / hkpug) livens me more than my current job lol
+and I'm planning to have more offline events that is available worldwide next month. Currently working on that. Last month in May we got the data workshop (https://data-workshop.python.hk/) and I'm glad that people are still pushing their results after the event (maybe we got them 400 HKD supermarket coupons? 🙈 )
+lucifertrj👾 — 昨天 凌晨12:48
+awesome. can't wait to be part of this meetups (non pycon related).
+my dates are bit messed currently due to recent europe trip. I took a lot damage
+Alex Au — 昨天 凌晨12:50
+It’s okay, please tell me when will you be in HK and we can arrange one for you!
+lucifertrj👾 — 凌晨2:39
+here you covered mainly ETL part. Should we have a follow event on explainability and observability in July?
+
+around 11th or 17th July? 
+Alex Au — 上午8:37
+Do you wanna host it🤣like SHAP or so?
+lucifertrj👾 — 下午2:51
+yeah SHAP and observability with Comet OPIK.
+Alex Au — 下午3:18
+That’s interesting! And I’m thinking how can we extend this topic after the workshop
+lucifertrj👾 — 晚上7:02
+cool. let me know what you think.
+I will also see if I can provide any suggestions. currently I am out and not in right technical mood
+
+You can also check the my repo in alex-au-922 HKPUG-Meetup-PyPI-Challenge to see how we utilize github action and public 4c 16gb ram runner to run the worksthop
+
+I’ll treat this as two things: clarifying Tarun’s actual workshop ask, then turning it into a July event plus a post-event challenge/support plan. I’ll also check the repo/docs angle so the suggestion is realistic rather than just “nice workshop idea.”
+
+I found the repo structure. The useful pattern is not the PyPI topic itself, but the event mechanics: public docs, lab folders, one long-lived PR per team, automatic PR guard, scoreboard/certificate tiers, and fake-safe challenge boundaries.
+
+Thought for 2m 10s
+My read: Tarun wants to host a July follow-up workshop to the May data/ETL workshop, probably around 11 July or 17 July 2026, focused on:
+
+Explainability: SHAP, why the model made a prediction.
+Observability: Comet Opik, how to trace/debug/evaluate LLM or agent behaviour.
+
+This is a good continuation, but I would not market it as “SHAP + Opik” only, because they solve slightly different problems. SHAP is model explainability based on Shapley values; Opik is more LLM/agent observability, tracing, evaluation, and production monitoring. 
+
+Recommended framing
+Make it:
+
+Why Did My Model Say That? Explainability & Observability in Python
+Cantonese angle:
+
+個 model 啱咗，但你知唔知點解？
+個 agent 出事，但你有冇 trace 到？
+
+This links very naturally from the May workshop:
+
+May: clean the data / build useful features.
+
+July: understand model behaviour / debug failures.
+
+Afterwards: participants keep improving explanations, traces, and evaluation reports.
+
+I would prefer 11 July if venue is available, because it is a Saturday. 17 July is a Friday, so it works better as an evening talk/workshop, but less ideal for a hands-on event.
+
+Suggested workshop shape
+For a 2-hour HKPUG workshop:
+
+Time	Section	Owner
+0–10 min	Recap May data workshop: ETL is not the end; now we need trust/debugging	Alex / HKPUG
+10–35 min	SHAP intuition: global vs local explanations, feature importance, wrong predictions	Tarun
+35–60 min	Hands-on notebook: train/use a small model, explain one surprising prediction	Tarun + helpers
+60–70 min	Break / setup buffer	HKPUG
+70–100 min	Opik: tracing an LLM/agent workflow, inspecting inputs/outputs/latency/cost/errors	Tarun
+100–115 min	Mini challenge: explain one model failure + trace one bad LLM response	Participants
+115–120 min	Launch post-event challenge / leaderboard / next steps	HKPUG
+Opik’s own docs position it around tracing LLM calls/tool calls/agent steps, building tests from failures, evaluating outputs, and production monitoring, so the strongest workshop story is “debugging ML/AI systems after they leave the notebook.” 
+
+How HKPUG can support
+Before the workshop
+HKPUG should handle:
+
+Venue, Meetup page, registration, reminders, and marketing.
+
+Repo scaffold with starter notebooks, dataset, requirements, and clear “run this first” instructions.
+
+Helper team: 2–3 people who can debug Python env issues during the event.
+
+Dry run with Tarun one week before.
+
+Post-event challenge infra, not as an afterthought.
+
+Ask Tarun for only bounded deliverables:
+
+Need from Tarun	Why
+1 abstract	Meetup page
+1 beginner-friendly SHAP notebook	Hands-on core
+1 Opik demo notebook/app	Observability core
+Dependency list	Avoid install hell
+Expected attendee level	Marketing + pacing
+Whether Opik uses cloud or local self-host	Account/API-key planning
+Opik can be self-hosted locally with Docker, but for a live workshop, I would avoid forcing everyone to run the full stack unless Tarun has tested it carefully. The docs show local self-host via cloning the Opik repo and running ./opik.sh, then pointing the SDK to localhost:5173/api; this is nice for advanced participants, but risky as the main path. 
+
+After-workshop support: turn it into a 14–30 day challenge
+This is where your PyPI challenge pattern is useful. Your repo already has the right event mechanics: public MkDocs site, lab folders, participant rules, scoreboard/certificate tiers, and GitHub Actions workflows. The participant site describes a 12-flag, 30-day challenge with labs, hints, scoreboard, and expected hands-on time; the repo also has a PR guard workflow and docs deployment workflow. 
+
+For this event, make it less “CTF” and more:
+
+AI Debugging Trail
+Possible missions:
+
+Mission	Task
+01 Baseline	Run the provided model and submit baseline metrics
+02 Global SHAP	Identify top features and explain whether they make sense
+03 Local SHAP	Pick one wrong prediction and explain why the model failed
+04 Leakage Hunt	Find a suspicious feature or data leakage pattern
+05 Correlation Trap	Show where SHAP interpretation becomes misleading
+06 Trace It	Instrument a small LLM/agent call with Opik
+07 Failure Case	Capture a bad response as a trace
+08 Evaluation	Convert the failure into a regression test / evaluation case
+09 Improve	Compare before/after prompt, model, or retrieval setting
+10 Capstone	Submit a short “AI incident report”: what failed, evidence, fix
+This matches Opik’s evaluation loop: find an issue from traces, add it to a test suite, update the agent, and validate against the test suite. 
+
+GitHub Actions design
+Use the same mechanics as your PyPI repo:
+
+One long-lived PR per team.
+
+Teams submit JSON files or markdown reports under submissions/HKPUG-TEAM-XXXX/.
+
+GitHub Actions validates file shape and required fields.
+
+A generated scoreboard reads submission metadata.
+
+Certificates/coupons are based on tiers.
+
+Your current PyPI challenge already documents this pattern: one long-lived PR, team-code branch, encrypted flag files, automatic PR format checks, and certificate tiers. 
+
+One important warning: your existing PR guard uses pull_request_target, which is okay for metadata-only validation if you do not check out or execute participant code. But for this ML/Opik challenge, if you run notebooks or participant scripts, use unprivileged pull_request workflows with no secrets. GitHub/CodeQL explicitly warns that pull_request_target is privileged and can expose secrets or write tokens if untrusted PR code is checked out or executed. 
+
+GitHub’s public ubuntu-latest runners are enough for this if the dataset/model stays small: public repo Linux runners are listed as 4 CPU, 16 GB RAM, 14 GB SSD, and standard hosted runners are free/unlimited for public repositories. 
+
+What I would tell Tarun
+I would align with him like this:
+
+Yes, this sounds like a strong follow-up to the May ETL/data workshop. Let’s frame it as “after cleaning data, how do we understand and debug model/AI behaviour?”
+
+SHAP can cover model explainability, and Opik can cover LLM/agent observability and evaluation. HKPUG can support with venue, Meetup page, marketing, repo scaffolding, GitHub Actions submission flow, helper team, and a post-event challenge/leaderboard.
+
+Can you confirm whether you prefer 11 July or 17 July, and whether your Opik part will use cloud accounts, local self-hosting, or a prepared demo environment?
+
+The main thing: make Tarun own the technical storyline, but HKPUG owns the workshop product. That means setup, repo, challenge flow, leaderboard, helpers, reminders, and post-event momentum.
+
+
+can you tell me more about what is opik?
+
+I’ll explain it in the HKPUG/workshop context: what Opik is, what problem it solves, how it differs from SHAP, and what kind of demo Tarun could realistically run.
+
+Thought for 28s
+Opik is basically observability + evaluation tooling for LLM / RAG / agent apps.
+
+Think of it as:
+
+OpenTelemetry-style tracing, but for AI apps: prompts, LLM calls, tool calls, retrieved context, outputs, scores, latency, token usage, and failure cases.
+
+It is built by Comet and is open-source. The official docs describe it as a platform for recording LLM calls, tool invocations, and agent steps, then using those traces for debugging, test suites, production monitoring, and prompt optimization. 
+
+The problem Opik solves
+For normal backend systems, you debug with logs, traces, metrics:
+
+request → service A → database → service B → response
+For LLM apps, the flow is messier:
+
+user question
+→ system prompt
+→ retrieval / search / vector DB
+→ LLM call
+→ tool call
+→ another LLM call
+→ final answer
+→ user feedback / evaluator score
+When the answer is bad, you need to know:
+
+Did retrieval fail?
+Was the prompt bad?
+Did the model ignore instructions?
+Did the tool return wrong data?
+Was the answer hallucinated?
+Did latency or token cost spike?
+Did yesterday's prompt change make things worse?
+That is where Opik fits.
+
+What Opik tracks
+Opik can log and display things like:
+
+Area	What you inspect
+Traces	Full chain of LLM calls, tool calls, and agent steps
+Prompts	Which prompt/version produced which output
+Inputs/outputs	User input, model response, intermediate results
+RAG context	Retrieved chunks, context quality, answer relevance
+Evaluation	Hallucination, relevance, moderation, custom scores
+Production metrics	Feedback score, latency, cost, error rate
+Experiments	Compare prompt/model/agent versions
+Their GitHub README describes Opik as an open-source AI observability, evaluation, and optimization platform for LLM apps, RAG systems, and agentic workflows. 
+
+How it differs from SHAP
+This is the important part for Tarun’s workshop.
+
+SHAP explains a model prediction, usually for classical ML / tabular / tree / sklearn / XGBoost-style models:
+
+Why did this model predict "high risk"?
+→ age contributed +0.2
+→ income contributed -0.1
+→ previous default contributed +0.6
+SHAP’s docs describe it as a game-theoretic way to explain the output of machine-learning models using Shapley values. 
+
+Opik does not primarily explain the internal feature contribution of a model. It explains and monitors the behaviour of an LLM application pipeline:
+
+Why did this chatbot give a bad answer?
+→ retrieval returned irrelevant context
+→ the prompt was too vague
+→ the tool call failed
+→ the model hallucinated anyway
+→ evaluator score dropped
+So the clean framing is:
+
+SHAP = why did the model make this prediction?
+Opik = what happened inside my LLM / RAG / agent app?
+Why it is useful for HKPUG
+For a Python workshop, Opik is good because it is concrete. Participants can see a bad AI output and then inspect the trace instead of just saying “LLM 有時會 hallucinate 囉.”
+
+A good demo would be:
+
+Build a tiny RAG chatbot
+Ask it a question
+Get a bad answer
+Open Opik trace
+Inspect:
+  - user query
+  - retrieved documents
+  - prompt
+  - model response
+  - evaluation score
+Fix prompt/retrieval
+Run again
+Compare result
+That becomes a very nice workshop story:
+
+唔係淨係叫 AI 答問題，而係要知道佢點樣錯、錯喺邊、點樣量度有冇好返。
+
+Deployment options
+For a workshop, there are two realistic options.
+
+Option A: Use Comet cloud.
+Lowest setup pain. Better for live workshop.
+
+Option B: Self-host locally with Docker Compose.
+Opik supports local self-hosting; their docs say local deployment uses Docker Compose and is easy for getting started, but not intended for production deployment. 
+
+For HKPUG, I would avoid making every participant self-host Opik during the session unless Tarun has tested it end-to-end. Docker issues can kill a 2-hour workshop. Better pattern:
+
+Main path: cloud / prepared demo workspace
+Advanced path: local self-host guide after workshop
+My suggested simple explanation to participants
+You can introduce it like this:
+
+Opik is an open-source observability and evaluation platform for LLM applications. Instead of only seeing the final answer, you can trace every prompt, model call, tool call, retrieved context, latency, token cost, and evaluation score. It helps you debug why an AI app failed and turn real failures into test cases.
+
+For the July workshop, I’d position Opik as the LLM debugging half, while SHAP is the ML explainability half.
+
+
+but how can the tournament be?
+
+The strongest format is not a pure Kaggle leaderboard. For this topic, a better tournament is “AI incident response”: teams must find why an AI/model failed, prove it with SHAP/Opik evidence, then improve it without breaking reproducibility.
+
+Thought for 48s
+I would make it an AI debugging tournament, not a normal “highest accuracy wins” ML competition.
+
+The theme should be:
+
+Why Did My AI Fail? — Explainability & Observability Tournament
+Teams are given broken or suspicious AI systems. They need to diagnose, prove, and fix the issue using SHAP and Opik.
+
+That fits Tarun’s topic much better because SHAP is about explaining model predictions, while Opik is about tracing/evaluating LLM or agent behaviour. Opik’s docs explicitly focus on logging traces, turning bad traces into test cases, online evaluation, latency/cost/error monitoring, and prompt optimization. 
+
+The core game loop
+Each mission should look like this:
+
+1. A model / RAG app / agent gives a suspicious result
+2. Team investigates using SHAP or Opik
+3. Team submits:
+   - diagnosis
+   - evidence
+   - fix
+   - before/after result
+4. GitHub Actions checks submission format
+5. Human judges score explanation quality
+So it is closer to incident response for AI systems than Kaggle.
+
+Suggested format
+Onsite workshop: launch day
+Use the July meetup as the kickoff.
+
+Part 1: Tarun teaches SHAP
+Part 2: Tarun teaches Opik
+Part 3: Teams solve one mini mission onsite
+Part 4: HKPUG launches the 14-day tournament
+The onsite part should be easy and satisfying. People should leave with:
+
+I generated a SHAP explanation
+I saw an Opik trace
+I submitted my first mission
+I know how to continue after the workshop
+After the workshop: 14-day tournament
+I think 14 days is better than 30 days for this one. The PyPI challenge can survive 30 days because CTF flags are discrete. For explainability/observability, people may lose momentum if it drags too long.
+
+Suggested timeline:
+
+Period	What happens
+Day 0	Workshop + Mission 0 live
+Days 1–4	SHAP missions
+Days 5–9	Opik / RAG / agent tracing missions
+Days 10–13	Capstone incident report
+Day 14	Leaderboard freeze
+Next HKPUG	Winner sharing / mini presentations
+Mission design
+I would split it into three tracks.
+
+Track A: SHAP / model explainability
+Use a small tabular dataset. I would avoid finance/medical unless fully synthetic. A safe HKPUG-themed dataset is better:
+
+Predict whether a meetup attendee will complete a workshop challenge
+Features can be synthetic:
+
+registered_days_before_event
+has_python_experience
+team_size
+uses_uv
+submitted_first_pr
+attended_before
+notebook_setup_failed
+Example missions:
+
+Mission	Task	What teams learn
+A1 Baseline	Train/run provided model and report baseline	Reproducibility
+A2 Global Explanation	Use SHAP to find top features	Global feature importance
+A3 Local Explanation	Explain one wrong prediction	Local explanation
+A4 Leakage Hunt	Find a suspicious feature that makes the model look too good	Data leakage
+A5 Human-readable Report	Explain the model failure to a non-ML organizer	Communication
+The key is: do not reward accuracy alone. Reward whether they can explain why the model behaves that way.
+
+Track B: Opik / LLM observability
+Give teams a tiny RAG chatbot for HKPUG event questions. It has intentional issues:
+
+Bad retrieval
+Bad prompt
+Missing source checking
+Tool call returning stale data
+Overconfident hallucination
+Poor latency / high token use
+Example missions:
+
+Mission	Task	What teams learn
+B1 Trace First Run	Instrument the app and submit an Opik trace	Basic observability
+B2 Bad Retrieval	Find why the chatbot answered from the wrong document	RAG debugging
+B3 Prompt Regression	Compare two prompts and show which one is worse	Prompt evaluation
+B4 Failure to Test Case	Convert one bad trace into an eval case	Regression testing
+B5 Cost / Latency	Reduce cost or latency without hurting quality	Production tradeoff
+This is a very natural Opik tournament because Opik supports tracing LLM calls, tool calls, agent steps, scoring outputs, and building test suites from traces. 
+
+Track C: Capstone
+Final mission:
+
+Write an AI Incident Report
+Teams receive a scenario:
+
+The HKPUG event assistant started giving wrong answers after a prompt/retrieval update.
+Find the root cause, prove it with traces/evaluations, fix it, and explain how to prevent regression.
+Submission:
+
+1. Summary
+2. Root cause
+3. Evidence from SHAP / Opik
+4. Fix
+5. Before/after comparison
+6. What monitoring/eval should be added
+This gives you something much better than a scoreboard: publishable community writeups.
+
+Scoring
+I would use 1000 points, split between automated checks and human judging.
+
+Area	Points
+Reproducible submission	100
+SHAP missions	250
+Opik missions	250
+Capstone incident report	250
+Communication / clarity	100
+Community bonus	50
+For each mission:
+
+Criterion	Points
+Correct diagnosis	40%
+Evidence quality	30%
+Fix / improvement	20%
+Explanation clarity	10%
+This avoids the trap where someone just optimizes a metric and learns nothing.
+
+Submission flow
+Reuse your PyPI challenge style.
+
+Your existing repo already has a good structure: participant-facing docs, labs, MkDocs site, and a clear “safe toy ecosystem” pattern. The README says the challenge uses docs/ for participant site content and labs/ for lab workspaces. 
+
+For this tournament:
+
+docs/
+  index.md
+  rules.md
+  setup.md
+  missions/
+    mission-00.md
+    mission-a1.md
+    mission-a2.md
+    mission-b1.md
+    mission-b2.md
+    capstone.md
+
+labs/
+  shap-attendee-model/
+  opik-rag-assistant/
+
+submissions/
+  HKPUG-TEAM-AB12/
+    README.md
+    mission-a1.json
+    mission-a2.md
+    mission-b1.json
+    capstone.md
+Your current PyPI challenge format already uses one long-lived PR per team, with title like [HKPUG-TEAM-AB12] submissions, branch like submissions/HKPUG-TEAM-AB12, and team folders under submissions/. That pattern is exactly what I would keep. 
+
+GitHub Actions
+Use Actions for format validation, not heavy judging.
+
+Good automated checks:
+
+PR title format correct
+Branch format correct
+Only modifies own team folder
+Required files exist
+JSON schema valid
+No huge files
+No API keys accidentally committed
+Notebook output stripped or size-limited
+Your existing PR guard already validates team-code naming, branch naming, one team per PR, allowed submission file names, duplicate PRs, and labels invalid submissions. 
+
+But for this tournament, I would be careful: your current guard uses pull_request_target, which is okay for metadata-only checks if you do not check out or run participant code. If you want to execute submitted notebooks/scripts, use pull_request with read-only permissions and no secrets. CodeQL’s GitHub Actions guidance says untrusted PR code should be handled with the pull_request trigger in an unprivileged environment. 
+
+Leaderboard style
+I would avoid a fully public exact-score leaderboard from day one. It can make beginners feel hopeless.
+
+Better:
+
+Bronze: completed 2 missions
+Silver: completed 5 missions
+Gold: completed 8 missions
+Finalist: submitted capstone
+Winner: judged best capstone
+Then show:
+
+Team	Tier	SHAP	Opik	Capstone
+HKPUG-TEAM-A1B2	Gold	✅✅✅	✅✅✅	In review
+HKPUG-TEAM-C3D4	Silver	✅✅	✅✅	—
+This matches your existing certificate-tier style, where the PyPI challenge uses Participation / Explorer / Completion / Finisher tiers. 
+
+Prize categories
+Do not only have “highest score”.
+
+Use fun categories:
+
+Best Debugger
+Best Explanation
+Best Opik Trace
+Best SHAP Story
+Best Beginner Team
+Best Incident Report
+Most Reproducible Submission
+Most Painfully Real Bug
+Cantonese category names could be fun:
+
+最識捉鬼獎
+最清楚解釋獎
+Trace 到你唔信獎
+Model 點解咁諗獎
+新手但好堅獎
+My preferred final design
+I would call it:
+
+HKPUG AI Debugging Trail
+Subtitle:
+
+From clean data to explainable, observable AI.
+
+Structure:
+
+Mission 0: Hello SHAP, Hello Opik
+Mission 1: Why is this prediction wrong?
+Mission 2: Which feature is lying?
+Mission 3: Is this model leaking data?
+Mission 4: Trace the chatbot
+Mission 5: Find the bad retrieval
+Mission 6: Turn failure into eval
+Mission 7: Improve without breaking
+Mission 8: AI incident report
+This gives Tarun a clean workshop story, gives HKPUG a follow-up tournament, and gives participants something more meaningful than “train model, submit accuracy.”
+
+
+I'm just thinking how to make the score standardized. We want people to do the challenges, but the challenge itself has to be normalized, reasonable and quantitative.
+
+I think the key is to separate completion, correctness, and quality. If everything becomes human-judged “best explanation”, it will feel unfair; if everything is pure metric, people can game it and learn less.
+
+Thought for 24s
+Yes — the tournament needs a standard scoring protocol, not just a leaderboard.
+
+I would design it like this:
+
+Final score = sum of normalized mission scores
+Each mission = 100 points
+Each mission has fixed inputs, fixed expected outputs, fixed scoring rules
+Most points should be automatically checkable
+Human judging should be limited to checklist-style scoring
+Core principle
+Do not score people against each other directly.
+
+Avoid:
+
+Rank 1 gets 100, rank 2 gets 80, rank 3 gets 60
+That makes the score unstable and discouraging.
+
+Use absolute normalized scoring instead:
+
+You completed Mission A2 and got 82/100.
+That score means the same thing no matter who else joined.
+Then leaderboard is just a display of standardized scores.
+
+Suggested scoring model
+Each mission is worth 100 points.
+
+100 pts per mission =
+20 pts reproducibility
+25 pts correct diagnosis
+25 pts evidence quality
+20 pts improvement / fix
+10 pts communication
+For simpler missions, use:
+
+100 pts =
+30 pts valid submission
+40 pts correct answer
+20 pts quantitative result
+10 pts explanation
+For harder missions, use the full 5-part version.
+
+Example normalized formula
+For every mission:
+
+mission_score = validity + diagnosis + evidence + improvement + clarity
+Then final tournament score:
+
+final_score =
+0.30 * SHAP_track_score
++ 0.30 * Opik_track_score
++ 0.25 * Capstone_score
++ 0.15 * Reproducibility_score
+But internally, everything should still be out of 100 so participants understand it.
+
+Track A: SHAP scoring
+For SHAP challenges, the scoring can be very quantitative.
+
+Example mission: “Find the feature leakage”
+Participants receive a dataset and model. One feature is suspicious.
+
+Submission format:
+
+{
+  "team_id": "HKPUG-TEAM-A1B2",
+  "mission": "A3-leakage-hunt",
+  "suspect_feature": "submitted_first_pr",
+  "evidence_rows": [12, 44, 91],
+  "top_global_features": [
+    "submitted_first_pr",
+    "registered_days_before_event",
+    "team_size"
+  ],
+  "diagnosis": "The model is using a post-outcome feature that would not be available at prediction time.",
+  "fixed_auc": 0.74,
+  "baseline_auc": 0.96
+}
+Scoring:
+
+Item	Points	How to score
+Valid JSON schema	10	Automatic
+Correct suspicious feature	25	Exact match / accepted aliases
+SHAP evidence includes feature in top-k	20	Automatic top-k comparison
+Correct leakage explanation	15	Checklist
+Removes or mitigates leakage	15	Automatic/code review
+Reports before/after metric	10	Automatic
+Clear short writeup	5	Checklist
+Total: 100
+
+This is fair because everyone has the same hidden answer, same model, same data, same scoring.
+
+Track B: Opik scoring
+For Opik, the trick is to avoid judging “nice traces” subjectively. Instead, define required trace evidence.
+
+Example mission: “Find why the RAG bot hallucinated”
+Participants receive a broken RAG app.
+
+Expected root cause:
+
+Retriever returned irrelevant context because chunking/index metadata is wrong.
+Submission format:
+
+{
+  "team_id": "HKPUG-TEAM-A1B2",
+  "mission": "B2-bad-retrieval",
+  "trace_id": "abc123",
+  "root_cause": "bad_retrieval",
+  "failed_question": "When is HKPUG #99?",
+  "retrieved_doc_ids": ["doc_07", "doc_12"],
+  "expected_doc_id": "doc_03",
+  "before_score": 0.35,
+  "after_score": 0.82,
+  "fix_type": "metadata_filter"
+}
+Scoring:
+
+Item	Points	How to score
+Trace submitted / exported	15	Automatic/manual existence check
+Trace contains prompt, retrieved context, output	20	Automatic if exported JSON
+Correct root cause category	20	Exact match
+Correct failing question identified	10	Exact match
+Correct evidence: wrong retrieved docs	15	Automatic
+Fix improves eval score	15	Formula-based
+Short explanation	5	Checklist
+Total: 100
+
+Root cause categories should be predefined:
+
+bad_retrieval
+stale_context
+prompt_regression
+tool_failure
+missing_grounding
+overlong_context
+bad_eval
+latency_cost_regression
+That makes scoring normalized.
+
+Improvement scoring formula
+For “improve the model/app” missions, do not simply score raw accuracy. Normalize improvement against a known baseline and ceiling.
+
+Example:
+
+baseline_score = 0.45
+target_score = 0.85
+team_score = 0.73
+Improvement points:
+
+normalized_improvement =
+(team_score - baseline_score) / (target_score - baseline_score)
+Then cap it:
+
+improvement_points =
+max(0, min(1, normalized_improvement)) * max_points
+So if the mission gives 20 improvement points:
+
+(0.73 - 0.45) / (0.85 - 0.45) = 0.70
+
+0.70 * 20 = 14 points
+This is better than “highest accuracy wins” because the score has a fixed meaning.
+
+Use tiers, not only exact ranking
+Even with quantitative scoring, I would show tiers first:
+
+Tier	Requirement
+Bronze	300+ points
+Silver	500+ points
+Gold	700+ points
+Finalist	800+ points + capstone submitted
+Winner	Best capstone among finalists
+This encourages people to keep doing challenges even if they cannot win overall.
+
+Then leaderboard can show:
+
+Team	Points	Tier	SHAP	Opik	Capstone
+A1B2	760	Gold	280	250	170
+C3D4	610	Silver	230	180	120
+E5F6	420	Bronze	190	110	—
+Make each challenge have a scoring card
+Every mission should publish this upfront:
+
+Mission A3: Leakage Hunt
+
+Maximum score: 100
+
+You must submit:
+- mission-a3.json
+- short explanation in mission-a3.md
+- optional notebook
+
+Scoring:
+- 10 pts valid submission
+- 25 pts correct leakage feature
+- 20 pts SHAP evidence
+- 15 pts correct explanation
+- 15 pts mitigation
+- 10 pts before/after metrics
+- 5 pts clarity
+This is very important. Participants should know exactly what “good” means.
+
+What should be automated?
+Automate these:
+
+JSON schema validation
+team folder validation
+file size limits
+required fields
+metric range validation
+top-k feature comparison
+root cause category matching
+before/after score calculation
+hidden test set scoring
+leaderboard generation
+Human review only for:
+
+Does the explanation make sense?
+Did they provide real evidence?
+Is the fix reasonable?
+Is the incident report clear?
+And even human review should be checklist-based, not vibes-based.
+
+Example human checklist:
+
+Explanation score: 10 pts
+
+[ ] Mentions the exact failure case: 2 pts
+[ ] Connects evidence to diagnosis: 3 pts
+[ ] Explains why the fix addresses the cause: 3 pts
+[ ] Avoids unsupported claims: 2 pts
+That keeps it fair.
+
+My recommended final structure
+I would run the tournament as:
+
+8 missions * 100 points = 800
+Capstone = 200
+Total = 1000
+Breakdown:
+
+Section	Points
+Mission 0: Setup + first PR	50
+SHAP missions	300
+Opik missions	300
+Capstone incident report	250
+Community/reproducibility bonus	100
+Total	1000
+But the community bonus should not decide the main winner. Use it for certificates or side awards.
+
+A clean version:
+
+Main score: 900
+Bonus score: 100
+Displayed score: 1000
+Winner decided by main score first, bonus as tie-breaker
+This avoids someone winning mainly by social posting / PR noise.
+
+The main design rule
+For every challenge, ask:
+
+Can we define the expected answer?
+Can we define the expected artifact?
+Can we score at least 70% automatically?
+Can a beginner still get partial points?
+Can an advanced participant do better without gaming it?
+If yes, it is a good tournament challenge.
+
+If no, it should become a capstone / side award, not a core scoring mission.
+
+
+how "hard" can these tracks be?
+
+Thought for 13s
+They can be quite hard, but the hardness should come from diagnosis and reasoning, not from setup pain.
+
+For HKPUG, I would not make the main tournament “expert-only”. Better design:
+
+70% of points = doable by motivated beginners/intermediate Python users
+20% of points = challenging for ML/LLM practitioners
+10% of points = boss-level / tie-breaker
+So people keep playing, but strong teams still have room to shine.
+
+Hardness dimensions
+A challenge can be hard in different ways:
+
+Hardness type	Good or bad?	Example
+Python setup hard	Bad	Docker, API keys, CUDA, broken dependencies
+Concept hard	Good	SHAP with correlated features
+Diagnosis hard	Good	Same bad answer could be caused by retrieval or prompt
+Evidence hard	Good	Need to prove the root cause with trace/eval
+Compute hard	Usually bad	Training big models
+Ambiguity hard	Good only for capstone	Multiple possible fixes, judged by evidence
+For this event, avoid:
+
+“Can you install the thing?”
+Prefer:
+
+“Can you explain why the thing failed?”
+Recommended difficulty ladder
+I would split missions into Level 0 to Level 5.
+
+Level	Target participant	Expected time	Purpose
+L0	Everyone	5–15 min	Setup, first PR, run baseline
+L1	Beginner	15–30 min	Follow instructions, submit valid output
+L2	Beginner/intermediate	30–60 min	Interpret SHAP/trace evidence
+L3	Intermediate	1–2 hr	Diagnose root cause and fix
+L4	Advanced	2–4 hr	Hidden cases, tradeoffs, robustness
+L5	Expert/boss	Half day+	Open-ended incident report
+Main tournament should mostly be L1–L3. L4/L5 should exist, but not block normal people from getting Bronze/Silver/Gold.
+
+SHAP track hardness
+Easy SHAP missions
+These should be very guided.
+
+Run notebook → generate SHAP plot → submit top 3 features
+Example:
+
+Mission	Difficulty	Why
+Run baseline model	L0	Basic setup
+Submit top 5 global SHAP features	L1	Mostly mechanical
+Explain one prediction using SHAP values	L2	Needs interpretation
+A beginner can complete these even if they do not deeply understand Shapley values.
+
+Medium SHAP missions
+This is where it becomes educational.
+
+The model is accurate, but something is suspicious.
+Find the feature that should not be used.
+Example missions:
+
+Mission	Difficulty	Why
+Leakage hunt	L2–L3	Need to connect high importance with data semantics
+Wrong prediction analysis	L3	Need to inspect local explanation and row data
+Remove bad feature and compare metrics	L3	Need before/after reasoning
+This is probably the sweet spot for HKPUG.
+
+Hard SHAP missions
+These are for advanced teams.
+
+Mission	Difficulty	Why
+Correlated feature trap	L4	SHAP importance may be split or misleading
+Distribution shift	L4	Feature importance changes across test sets
+Explanation stability	L4–L5	Need repeated runs / perturbation analysis
+Fairness-style subgroup failure	L4–L5	Need compare explanations across groups
+Example hard challenge:
+
+The global SHAP chart says feature A is important.
+But feature A is only acting as a proxy for feature B.
+Prove this with subgroup analysis or feature removal.
+That is hard, but still reasonable if the data is small and docs are clear.
+
+Opik / observability track hardness
+Easy Opik missions
+Make the first Opik missions almost mechanical.
+
+Run app → ask question → create trace → submit trace/export ID
+Mission	Difficulty	Why
+Instrument one LLM call	L1	Basic tracing
+Capture prompt/input/output	L1	Understand what a trace contains
+Submit one failed case	L2	Start thinking diagnostically
+This gives people the “aha” moment without drowning them.
+
+Medium Opik missions
+This is the real tournament layer.
+
+Mission	Difficulty	Why
+Bad retrieval diagnosis	L2–L3	Need inspect retrieved context
+Prompt regression	L3	Need compare two runs
+Tool failure	L3	Need trace multi-step app
+Convert failure into eval case	L3	Need understand regression testing
+Example:
+
+The chatbot answers the wrong date for an HKPUG event.
+Find whether the problem is:
+- wrong retrieved document
+- stale context
+- bad prompt
+- model hallucination
+- tool failure
+Participants submit:
+
+{
+  "root_cause": "bad_retrieval",
+  "evidence": {
+    "failed_question": "...",
+    "retrieved_doc_ids": ["doc_02", "doc_09"],
+    "expected_doc_id": "doc_05"
+  },
+  "fix_type": "metadata_filter",
+  "before_score": 0.41,
+  "after_score": 0.78
+}
+This is hard enough to feel real, but still scoreable.
+
+Hard Opik missions
+These can be quite hard.
+
+Mission	Difficulty	Why
+Multi-turn agent failure	L4	Need inspect several steps
+Bad tool call hidden in trace	L4	Not obvious from final answer
+Cost/latency optimization	L4	Need tradeoff quality vs cost
+Evaluation design	L4–L5	Need write meaningful evals
+Intermittent failure	L5	Same prompt sometimes passes, sometimes fails
+Example boss mission:
+
+The agent sometimes gives correct answers and sometimes hallucinates.
+Find the pattern, create an eval set, and propose a monitoring rule.
+That is much harder than “fix the prompt”.
+
+Capstone hardness
+The capstone can be genuinely hard because it is judged more like an incident report.
+
+I would make capstone L4, with optional L5 bonus.
+
+Basic capstone:
+
+Given a broken AI assistant, diagnose the main failure,
+show evidence, fix it, and write a short report.
+Hard capstone:
+
+There are multiple failures:
+- retrieval is sometimes wrong
+- prompt is over-trusting context
+- evaluation metric misses hallucination
+- one fix improves quality but increases cost
+Participants need to decide what matters most.
+
+This is where advanced teams shine.
+
+Suggested point distribution by difficulty
+For a 1000-point tournament:
+
+Difficulty	Points	Role
+L0 setup	50	Everyone starts
+L1 easy	200	Beginner-friendly
+L2 normal	250	Main learning
+L3 challenging	250	Main competition
+L4 hard	150	Advanced teams
+L5 boss/bonus	100	Tie-breaker / prestige
+This means a beginner can still get:
+
+L0 + L1 + some L2 = Bronze/Silver
+A strong team needs L3/L4 to win.
+
+What “reasonable hard” means
+I would use these target completion rates:
+
+Mission type	Expected completion
+Setup mission	90%+
+Easy missions	70–80%
+Medium missions	40–60%
+Hard missions	15–30%
+Boss mission	5–15%
+If only 5% can complete a normal mission, it is too hard.
+
+If 90% can complete every mission, it is not a tournament.
+
+My preferred track design
+I would do this:
+
+SHAP track: 300 points
+Mission	Difficulty	Points
+A0 Run baseline	L0	30
+A1 Global explanation	L1	50
+A2 Local explanation	L2	60
+A3 Leakage hunt	L3	80
+A4 Correlated feature trap	L4	80
+Opik track: 300 points
+Mission	Difficulty	Points
+B0 First trace	L1	40
+B1 Trace a failed answer	L2	50
+B2 Bad retrieval diagnosis	L3	80
+B3 Turn failure into eval	L3	70
+B4 Cost/latency/quality tradeoff	L4	60
+Capstone: 300 points
+Part	Difficulty	Points
+Root cause	L3	80
+Evidence	L3	80
+Fix	L3–L4	70
+Before/after comparison	L3	40
+Clear incident report	L4	30
+Bonus: 100 points
+Bonus	Difficulty	Points
+Reproducible notebook	L2	30
+Good README/writeup	L2	30
+Creative but valid fix	L4	40
+Total: 1000 points.
+
+The important design constraint
+For HKPUG, I would not make the tournament hard by requiring deep ML theory.
+
+Make it hard by requiring:
+
+clear diagnosis
+good evidence
+controlled before/after comparison
+reproducible submission
+honest explanation
+That fits the community better. Python users, data people, backend people, and infra people can all participate.
+
+My strongest recommendation:
+
+Make the first 500 points approachable, the next 300 points challenging, and the final 200 points genuinely hard.
+That gives you both community participation and serious competition.
+
+
+but I don't even wanna have human review, this takes a huge time and effort
+
+Yes, then the tournament has to be designed from the start as an autograded game, not as a judged competition. That means free-form “explain your reasoning” becomes optional; the scored part must be structured outputs, hidden tests, and reproducible artifacts.
+
+Thought for 35s
+Yes — then you should make it 100% autograded, and design the challenges around that constraint.
+
+That means:
+
+No essays.
+No “judge the best explanation”.
+No subjective incident reports in the main score.
+No free-form notebook review.
+Instead:
+
+Structured JSON submissions
+Known answer keys
+Hidden test cases
+Fixed scoring formulas
+Automatic leaderboard
+Optional human sharing only after the tournament
+The key shift
+Originally I suggested:
+
+diagnose → explain → prove → write report
+
+But if you want zero human review, change it to:
+
+diagnose → submit structured evidence → grader checks correctness
+
+For example, instead of asking:
+
+Explain why the chatbot hallucinated.
+Ask:
+
+{
+  "root_cause": "bad_retrieval",
+  "failed_query_id": "q_014",
+  "expected_doc_id": "doc_event_2026_07",
+  "actual_retrieved_doc_ids": ["doc_2025_old_event", "doc_general_intro"],
+  "fix_type": "metadata_filter",
+  "before_score": 0.42,
+  "after_score": 0.81
+}
+This is fully machine-checkable.
+
+Tournament types that can be fully autograded
+You should use four mission types.
+
+1. Exact diagnosis missions
+There is a known hidden answer.
+
+Example:
+
+The model performs too well. Find the leakage feature.
+Submission:
+
+{
+  "suspect_feature": "submitted_after_deadline",
+  "evidence_type": "shap_global_top_feature"
+}
+Autograder checks:
+
+suspect_feature == expected_feature
+evidence_type in accepted_evidence_types
+Good for SHAP.
+
+2. Metric improvement missions
+Participants submit code or predictions. The grader runs against a hidden test set.
+
+Example:
+
+Improve the RAG system without increasing hallucination rate.
+Score:
+
+score = answer_correctness - hallucination_penalty - latency_penalty
+This is good for Opik/RAG tasks.
+
+3. Trace validation missions
+Participants must produce a valid trace artifact.
+
+Example:
+
+Instrument the AI app so each run records:
+- user input
+- retrieved documents
+- prompt
+- model output
+- latency
+- token usage
+- evaluator score
+Submission:
+
+{
+  "trace_file": "traces/mission-b1.json"
+}
+Autograder checks that the trace contains required spans/fields.
+
+This avoids needing a human to open Opik UI manually.
+
+4. Hidden-case robustness missions
+The public examples are easy. The hidden cases test whether the fix generalizes.
+
+Example:
+
+Public: chatbot fails on one HKPUG event question.
+Hidden: chatbot fails on other event/date/speaker questions.
+Autograder runs:
+
+20 hidden questions
+score = number of correct grounded answers
+This is the closest thing to a fair leaderboard.
+
+What to remove from main scoring
+I would remove or downgrade these:
+
+Original idea	Problem	Replacement
+Human incident report	Too much review work	Structured root-cause JSON
+Best explanation	Subjective	Exact evidence fields
+Notebook review	Slow and messy	solution.py with fixed interface
+“Creative fix” bonus	Hard to compare	Hidden robustness tests
+Manual Opik trace review	Too much clicking	Trace export JSON validation
+You can still have “best writeup” as an optional community award, but not part of the main score.
+
+Fully automated 1000-point structure
+I would do:
+
+Track	Points	Review?
+Setup + valid PR	100	Auto
+SHAP diagnosis track	300	Auto
+Opik trace track	250	Auto
+RAG/agent improvement track	250	Auto
+Robustness bonus	100	Auto
+Total	1000	0 human review
+Example score breakdown
+Setup: 100
+A1 SHAP global feature: 50
+A2 SHAP local explanation: 75
+A3 leakage detection: 100
+A4 correlated feature trap: 75
+
+B1 first trace: 50
+B2 trace schema completeness: 75
+B3 bad retrieval diagnosis: 75
+B4 prompt regression diagnosis: 50
+
+C1 improve retrieval: 100
+C2 reduce hallucination: 100
+C3 latency/cost constraint: 50
+
+Hidden robustness: 100
+SHAP track: autograded design
+Mission A1: Global explanation
+Participants submit:
+
+{
+  "mission": "A1",
+  "top_features": [
+    "submitted_first_pr",
+    "registered_days_before_event",
+    "team_size"
+  ]
+}
+Autograder:
+
++10 valid schema
++30 correct top-3 features
++10 correct order
+Mission A2: Local explanation
+Given row ID row_142, ask:
+
+Which feature most increased the model prediction?
+Which feature most decreased it?
+Submission:
+
+{
+  "mission": "A2",
+  "row_id": 142,
+  "positive_driver": "submitted_first_pr",
+  "negative_driver": "notebook_setup_failed"
+}
+Autograder checks against expected SHAP sign/ranking.
+
+Mission A3: Leakage hunt
+Submission:
+
+{
+  "mission": "A3",
+  "leakage_feature": "submitted_first_pr",
+  "mitigation": "drop_feature",
+  "baseline_auc": 0.96,
+  "fixed_auc": 0.74
+}
+Autograder:
+
++40 correct leakage feature
++20 correct mitigation type
++20 metric within expected range
++20 hidden validation passes
+No explanation needed.
+
+Opik track: autograded design
+For zero human review, I would not rely on someone manually checking Opik dashboards.
+
+Instead, require participants to export or generate trace artifacts.
+
+Example trace file:
+
+{
+  "run_id": "mission-b2-team-a1b2",
+  "spans": [
+    {
+      "name": "user_query",
+      "input": "When is HKPUG #99?"
+    },
+    {
+      "name": "retrieval",
+      "retrieved_doc_ids": ["doc_2025_legacy", "doc_intro"],
+      "latency_ms": 120
+    },
+    {
+      "name": "llm_call",
+      "prompt_hash": "abc123",
+      "output": "HKPUG #99 is in May..."
+    },
+    {
+      "name": "evaluation",
+      "groundedness": 0.2,
+      "answer_correctness": 0.0
+    }
+  ]
+}
+Autograder checks:
+
+Has required spans?
+Has retrieved doc IDs?
+Has model output?
+Has evaluator score?
+Root cause matches expected answer?
+So Opik becomes the tool they use, but the official scoring artifact is a JSON trace.
+
+That is much easier to grade.
+
+RAG / agent improvement track
+This is where the real competition can happen.
+
+Give them a broken RAG app with fixed interface:
+
+def answer(question: str) -> dict:
+    return {
+        "answer": "...",
+        "sources": ["doc_001"],
+        "trace": {...}
+    }
+The grader runs hidden questions:
+
+questions = [
+    "When is the July HKPUG workshop?",
+    "Who is hosting the explainability session?",
+    "What tool is used for LLM observability?",
+]
+Scoring formula:
+
+score =
+60 * correctness
++ 20 * source_grounding
++ 10 * trace_completeness
++ 10 * latency_budget
+Penalty:
+
+-20 if answer has no source
+-20 if source is wrong
+-30 if hallucination detected by exact expected facts
+-10 if latency exceeds budget
+This is fully automatic if the answers are fact-based.
+
+Important: avoid LLM-as-judge for the main score
+You might be tempted to use an LLM judge.
+
+I would avoid that for main scoring.
+
+Use LLM-as-judge only for:
+
+practice feedback
+non-official suggestions
+optional “AI judge said...” display
+For official score, prefer:
+
+exact match
+regex
+known document ID
+known root cause label
+numeric metric
+hidden test set
+schema validation
+Otherwise people will complain the judge is inconsistent.
+
+How to make it quantitative but not boring
+Use partial scoring.
+
+Example for a RAG question:
+
+Expected:
+answer_contains = ["11 July 2026", "SHAP", "Opik"]
+required_source = "doc_july_workshop"
+Scoring:
+
++10 contains correct date
++10 contains SHAP
++10 contains Opik
++20 cites correct source
++20 trace has retrieval span
++20 trace has evaluator span
++10 latency under limit
+This is much better than pass/fail.
+
+Recommended repo structure
+hkpug-ai-debugging-trail/
+  docs/
+    index.md
+    setup.md
+    scoring.md
+    missions/
+      a1-global-shap.md
+      a2-local-shap.md
+      a3-leakage.md
+      b1-first-trace.md
+      b2-bad-retrieval.md
+      c1-rag-fix.md
+
+  public_data/
+    train.csv
+    sample_questions.json
+    documents/
+
+  starter/
+    shap_model/
+    rag_app/
+    opik_trace_template/
+
+  submissions/
+    HKPUG-TEAM-A1B2/
+      mission-a1.json
+      mission-a2.json
+      mission-b1-trace.json
+      solution.py
+
+  grader/
+    schemas/
+    public_tests/
+    score_submission.py
+For hidden tests, I would keep them outside the public repo or inject them only in a trusted grading workflow.
+
+One security/design warning
+If participants submit code, do not run it in a privileged workflow with secrets.
+
+Best split:
+
+Public PR workflow:
+- validate schema
+- validate folder format
+- run public tests only
+- no secrets
+
+Private/trusted scoring workflow:
+- run hidden tests
+- generate official score
+- update leaderboard
+If you want it to stay simple, start with output-only JSON submissions and public tests. But if you care about cheating resistance, you need hidden tests somewhere private.
+
+My recommended version for HKPUG
+Do this:
+
+During workshop
+Only require:
+
+Run notebook
+Generate SHAP answer
+Generate Opik-style trace JSON
+Submit first PR
+Autograded.
+
+After workshop
+Tournament missions:
+
+A1 top SHAP features
+A2 local SHAP drivers
+A3 leakage feature
+A4 feature proxy trap
+
+B1 valid trace
+B2 bad retrieval root cause
+B3 prompt regression root cause
+B4 missing grounding root cause
+
+C1 improve RAG correctness
+C2 improve grounding
+C3 keep latency under budget
+All submissions are JSON or fixed-interface Python.
+
+Scoring
+900 official auto points
+100 hidden robustness points
+0 human review
+Optional:
+
+Community showcase: best writeup / funniest bug / best explanation
+But those are not part of the tournament score.
+
+The clean principle is:
+
+If it cannot be graded by a script, it should not affect the leaderboard.
+
+
+so total 9 tasks?
+
+Thought for 9s
+Yes — I’d make it 9 tasks total. That feels manageable for participants and maintainable for HKPUG.
+
+I’d count it like this:
+
+Task	Track	Name	Points	Auto-graded by
+0	Setup	First PR + environment check	50	PR format, schema, sample run
+1	SHAP	Global feature importance	100	Top-k feature match
+2	SHAP	Local prediction drivers	100	Correct positive/negative drivers
+3	SHAP	Leakage hunt	150	Correct leakage feature + metric drop
+4	Opik	First valid trace	100	Required trace fields/spans
+5	Opik	Bad retrieval diagnosis	125	Root-cause label + doc IDs
+6	Opik	Prompt/tool regression diagnosis	125	Correct failure category + evidence fields
+7	RAG Fix	Improve grounded correctness	175	Hidden QA tests + source checking
+8	Robustness	Cost/latency/quality challenge	175	Hidden tests + latency/token budget
+Total: 1000 points.
+
+This gives you:
+
+1 setup task
+3 SHAP tasks
+3 Opik/observability tasks
+2 applied RAG improvement tasks
+That is probably the cleanest version.
+
+I would avoid having a separate “capstone report” if you want no human review. Instead, make Task 8 the boss-level task: hidden robustness, cost/latency, and quality constraints.
+
+The tournament story becomes:
+
+Task 0: Can you enter the game?
+Tasks 1–3: Can you explain model behaviour?
+Tasks 4–6: Can you observe and diagnose LLM/RAG failures?
+Tasks 7–8: Can you fix the system and survive hidden tests?
+For tiers:
+
+Tier	Score
+Bronze	300+
+Silver	500+
+Gold	700+
+Finalist	850+
+Champion candidate	900+
+I think 9 tasks / 1000 points / fully autograded is the sweet spot. More than that will become maintenance-heavy; fewer than that may not give enough progression.
+
+
+can you try creating this challenge, and play it yourself?
+
+I’ll build a small, runnable prototype rather than only describing it: 9 missions, JSON submissions, an autograder, synthetic data/trace fixtures, and then I’ll solve it once to see whether the scoring feels sane.
+
+Thought for 4m 5s
+Yes — I created a runnable prototype and played it once.
+
+Download it here: hkpug-ai-debugging-trail-prototype.zip
+
+It includes:
+
+README.md
+docs/
+  missions/task0–task8
+public_data/
+  synthetic attendee dataset
+  SHAP-style global/local explanation fixtures
+  RAG documents
+starter/
+  SHAP starter notes
+  Opik-style trace template
+  RAG answer format
+grader/
+  score_submission.py
+  generate_leaderboard.py
+  answer_key.json
+submissions/
+  HKPUG-TEAM-DEMO
+  HKPUG-TEAM-BASELINE
+.github/workflows/
+  grade-submission.yml
+I tested two submissions:
+
+Team	Score	Tier	Meaning
+HKPUG-TEAM-DEMO	1000 / 1000	Champion candidate	My “perfect playthrough”
+HKPUG-TEAM-BASELINE	567.25 / 1000	Silver	Partial/naive attempt
+You can also view the generated outputs:
+
+Demo score JSON
+Baseline score JSON
+Leaderboard markdown
+
+Important design note: I made Opik “Opik-style trace JSON” instead of requiring a real Opik server, because official scoring should not depend on someone opening a UI. In the real workshop, Tarun can use Opik live, but the tournament artifact should still be exported/structured JSON.
+
+The current 9 tasks are:
+
+Task	Track	Points
+0	Setup / first PR	50
+1	SHAP global feature importance	100
+2	SHAP local prediction drivers	100
+3	SHAP leakage hunt	150
+4	First valid Opik-style trace	100
+5	Bad retrieval diagnosis	100
+6	Prompt/tool regression diagnosis	100
+7	RAG grounded correctness	150
+8	Robustness: quality + latency + token budget	150
+Total		1000
+My conclusion after playing it: this format works, but before using it publicly, I would improve three things:
+
+Move grader/answer_key.json and hidden cases into a private grading repo/workflow.
+
+Replace my synthetic SHAP fixtures with Tarun’s real notebook/demo.
+
+Add stricter JSON Schema files and PR guards for one-team-one-folder submissions.
+
+But as a proof of concept, it already shows the thing we want: fully quantitative, fully autograded, no human review, still educational.
+
+Set this as a goal: use my alex-au-922 as the seed repository, and ct-alex-au as the player. Create the game in alex-au-922, and let ct-alex-au to play on it. ct-alex-au- will
+

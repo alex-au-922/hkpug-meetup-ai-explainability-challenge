@@ -1,0 +1,71 @@
+:root {
+  --hkpug-ink: #172126;
+  --hkpug-teal: #007c7a;
+  --hkpug-orange: #f0642f;
+  --hkpug-mint: #d9f3ea;
+  --hkpug-paper: #fbfcfa;
+}
+
+.md-main {
+  background:
+    linear-gradient(180deg, rgba(217, 243, 234, 0.42), rgba(255, 255, 255, 0) 260px),
+    var(--hkpug-paper);
+}
+
+.md-typeset h1 {
+  color: var(--hkpug-ink);
+  font-weight: 800;
+}
+
+.md-typeset h2 {
+  color: #22343a;
+  font-weight: 760;
+}
+
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.md-typeset code {
+  border-radius: 5px;
+}
+
+.scoreboard-panel {
+  border: 1px solid rgba(0, 124, 122, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.scoreboard-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  background: var(--hkpug-mint);
+  color: var(--hkpug-ink);
+}
+
+.scoreboard-header span,
+#scoreboard-table span {
+  color: #5b6b70;
+  font-size: 0.85em;
+}
+
+#scoreboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#scoreboard-table th,
+#scoreboard-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e6ecec;
+  text-align: left;
+}
+
+#scoreboard-table th {
+  background: #f6faf9;
+  color: #34464c;
+}

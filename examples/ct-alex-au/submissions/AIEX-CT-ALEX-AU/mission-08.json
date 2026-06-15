@@ -1,0 +1,12 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-08",
+  "answer": {
+    "before_trace_id": "trace-003",
+    "after_trace_id": "trace-004",
+    "changed_component": "retrieval router"
+  },
+  "evidence": [
+    "trace-003 to trace-004 improved because the retrieval router moved from general venue documents to event-policy documents, and context relevance moved from 0.22 to 0.91."
+  ]
+}

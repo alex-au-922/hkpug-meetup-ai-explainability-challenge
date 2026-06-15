@@ -1,0 +1,52 @@
+site_name: HKPUG AI Explainability Challenge
+site_description: Beginner-friendly SHAP and Opik tutorial with GitHub Actions scoring.
+site_url: https://alex-au-922.github.io/hkpug-meetup-ai-explainability-challenge/
+repo_url: https://github.com/alex-au-922/hkpug-meetup-ai-explainability-challenge
+repo_name: alex-au-922/hkpug-meetup-ai-explainability-challenge
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: deep orange
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - content.tabs.link
+
+extra_css:
+  - styles/challenge.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - Start: index.md
+  - Rules: rules.md
+  - How To Play: working-format.md
+  - SHAP for Humans: shap-for-humans.md
+  - Opik for Humans: opik-for-humans.md
+  - Missions:
+      - labs/index.md
+      - "01: SHAP vs Opik": labs/mission-01.md
+      - "02: Global SHAP": labs/mission-02.md
+      - "03: Local SHAP": labs/mission-03.md
+      - "04: SHAP Trap": labs/mission-04.md
+      - "05: Model Incident": labs/mission-05.md
+      - "06: Trace Reading": labs/mission-06.md
+      - "07: Evaluation": labs/mission-07.md
+      - "08: Compare Traces": labs/mission-08.md
+      - "09: Safe Boundary": labs/mission-09.md
+      - "10: Capstone": labs/mission-10.md
+  - Hints: hints.md
+  - Scoreboard: scoreboard.md
+  - Glossary: glossary.md
