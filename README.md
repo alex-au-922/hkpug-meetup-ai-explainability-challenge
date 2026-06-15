@@ -16,6 +16,10 @@ learning trail:
 - Opik: inspect what happened inside an LLM, RAG, or agent workflow.
 - GitHub Actions: score safe JSON submissions without running participant code.
 
+The challenge is automated but not hand-wavy. GitHub Actions is the score of
+record, and the capstone uses strict structured checks instead of manual essay
+judging.
+
 The goal is simple: after this tutorial, a beginner should be able to say:
 
 > The model predicted this because these features pushed it up or down, and the

@@ -29,8 +29,15 @@ participant code.
 That design is intentional. Explainability workshops should not teach people to
 trust random code from pull requests.
 
-## Human Review
+## Automated Score Of Record
 
-The automatic score checks whether your answer points at the right evidence.
-Organizers may still review final capstone writeups for clarity before awarding
-certificates or prizes.
+GitHub Actions is the score of record. The workflow runs the deterministic
+scorer, prints a mission-by-mission table, and uploads the score artifact.
+
+The challenge is still meant to be hard. Hardness comes from exact evidence
+requirements, not manual judging. Mission 10 is the boss-level task: it requires
+cross-artifact synthesis across SHAP evidence, Opik traces, metric movement,
+safe evidence handling, and a concrete action plan.
+
+Organizers can still read submissions for discussion or teaching moments, but
+the core score does not depend on private judgement.

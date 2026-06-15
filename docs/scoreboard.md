@@ -6,7 +6,7 @@ organizers can update `docs/assets/leaderboard.json` from scoring results.
 <div class="scoreboard-panel">
   <div class="scoreboard-header">
     <strong>AI Explainability Trail</strong>
-    <span>Scores update after reviewed submissions.</span>
+    <span>Scores come from deterministic GitHub Actions runs.</span>
   </div>
   <table id="scoreboard-table">
     <thead>

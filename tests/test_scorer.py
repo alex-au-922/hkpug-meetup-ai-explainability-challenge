@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from challenge.rubric import RUBRIC_BY_ID
+from challenge.rubric import RUBRIC, RUBRIC_BY_ID
 from challenge.scorer import (
     PARTICIPANT_ID_RE,
     render_markdown_summary,
@@ -33,6 +33,15 @@ def test_markdown_summary_contains_mission_table() -> None:
 
     assert "# Score for AIEX-CT-ALEX-AU" in summary
     assert "| mission-01 | 10/10 | OK |" in summary
+
+
+def test_rubric_stays_automated_and_hard() -> None:
+    mission_10 = RUBRIC_BY_ID["mission-10"]
+
+    assert len(RUBRIC) == 10
+    assert sum(mission.max_points for mission in RUBRIC) == 100
+    assert all(mission.max_points == 10 for mission in RUBRIC)
+    assert len(mission_10.checks) == 10
 
 
 def test_invalid_participant_id_is_rejected() -> None:

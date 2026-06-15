@@ -25,7 +25,7 @@ By the end of this trail, you should be able to:
 4. Recognize a data leakage warning even when a SHAP chart looks impressive.
 5. Read an Opik-style trace and identify which step caused a bad answer.
 6. Turn a bad AI response into a repeatable evaluation case.
-7. Write a short incident report that another engineer can review.
+7. Complete a harder capstone that combines SHAP, Opik, safety, and actions.
 
 The goal is not to memorize tool names. The goal is to learn a debugging habit:
 make a claim, point to evidence, and describe what should change next.
@@ -72,7 +72,7 @@ flowchart LR
   F --> G["Trace failure diagnosis"]
   G --> H["Evaluation dataset"]
   H --> I["Before/after comparison"]
-  I --> J["Capstone incident report"]
+  I --> J["Capstone evidence synthesis"]
 ```
 
 Each mission follows the same rhythm:
