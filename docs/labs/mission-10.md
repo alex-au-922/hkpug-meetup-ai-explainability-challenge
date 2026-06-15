@@ -36,12 +36,85 @@ The capstone does not require a long essay. It requires clear separation:
 | Next action | One concrete thing the team should do |
 | Evidence | A short paragraph tying the artifacts together |
 
+## Mini Lesson
+
+The capstone is an incident report because real AI debugging work usually ends
+with a communication problem. You may understand the issue yourself, but the
+team still needs a written explanation that can travel.
+
+A good incident report does three things:
+
+1. It describes the symptom without drama.
+2. It supports the diagnosis with evidence.
+3. It recommends a concrete next action.
+
+For this tutorial, you need to combine both tool families. The SHAP part should
+talk about feature contribution in the model artifact. The Opik part should talk
+about traces or evaluation in the support-bot artifact. If you blur those
+together, the report becomes less useful.
+
+## Study Note
+
+The capstone is not asking you to become a SHAP researcher or an Opik expert in
+one answer. It is asking you to show that you can use the right kind of evidence
+for the right kind of problem.
+
+Use SHAP language when the evidence is about a model prediction: feature,
+contribution, push up, push down, local case, or global summary. Use Opik
+language when the evidence is about an AI application run: trace, span,
+retrieval, prompt, evaluator score, dataset item, or regression check.
+
+That separation is the main lesson of the whole tutorial. SHAP explains why a
+model prediction moved. Opik helps you inspect and evaluate the path of an LLM
+application request. The capstone should make both ideas visible in one short
+report.
+
 ## Guided Writing
 
 Use exact names from the artifacts. Mention at least one SHAP feature, such as
 `late_payments` or `credit_utilization`, and at least one trace, such as
 `trace-003`. The report should make it obvious that you read the artifacts
 rather than guessing from the mission title.
+
+## Worked Outline
+
+You can draft the report like this:
+
+```text
+Incident type:
+The support bot had a retrieval context mismatch.
+
+SHAP lesson:
+The loan-risk artifact showed that features such as late_payments and credit_utilization can push one prediction upward.
+
+Opik lesson:
+trace-003 showed that bad retrieval context can lead the model to answer the wrong question.
+
+Next action:
+Add the weather-refund-policy case to an evaluation dataset and monitor context relevance.
+```
+
+Then turn that outline into the JSON fields.
+
+## Common Mistakes
+
+Do not write a generic summary of the whole tutorial. The mission asks for an
+incident report.
+
+Do not mention SHAP without naming any feature. That makes the report feel
+detached from the artifact.
+
+Do not mention Opik without naming any trace or evaluation idea. The report
+should show evidence from the trace artifact.
+
+Do not choose a vague next action such as "improve AI." Say whether you would
+remove a feature, retrain, add a test, monitor a metric, or evaluate a case.
+
+## What A Good Answer Looks Like
+
+A good answer has a concise incident type, one SHAP lesson about feature
+contribution, one Opik lesson about traces or evaluation, one concrete next
+action, and a paragraph of evidence that names both a feature and a trace.
 
 ## Submit
 

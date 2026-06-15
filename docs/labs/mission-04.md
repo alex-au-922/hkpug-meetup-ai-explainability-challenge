@@ -30,11 +30,74 @@ This is called data leakage. Data leakage often makes a model look better during
 testing than it will be in real life. The model is effectively using information
 that would not exist when the prediction is supposed to happen.
 
+## Mini Lesson
+
+Data leakage is one of the most important failure modes in applied machine
+learning. It happens when training or evaluation data contains information that
+will not be available when the model is used for real.
+
+Leakage can be subtle. Sometimes the feature name gives it away. Sometimes the
+feature is created by a pipeline step that accidentally uses future rows.
+Sometimes a column is a disguised version of the target label.
+
+SHAP is helpful here because it can reveal that the model is relying on a
+suspicious feature. But SHAP does not decide whether the feature is legitimate.
+Humans still need to ask whether the feature belongs in the model.
+
+## Study Note
+
+A good model review asks two questions at the same time:
+
+1. What did the model use?
+2. Should the model have been allowed to use it?
+
+SHAP is very good at the first question. It can show that
+`post_approval_call_count` influenced the score. The second question requires
+domain reasoning. If the feature is only created after the approval decision,
+then it would not be available at the moment the model is supposed to make the
+prediction.
+
+This is why explanation tools do not replace judgment. They make judgment
+better informed. A feature can be highly predictive and still be invalid for
+deployment. In fact, leaked features often look extremely predictive because
+they contain information from the future.
+
 ## Guided Reading
 
 Open the `known_trap` section. Read the feature name, the trap type, and the
 explanation of why the feature is bad. Your answer should connect the timing
 problem to the phrase "data leakage" or "future data."
+
+## Worked Reading
+
+The artifact tells you that `post_approval_call_count` is only known after a
+loan decision. That timing is the key. A model used during approval cannot use
+facts from after approval.
+
+A good reasoning chain is:
+
+1. The model is supposed to help with an approval-time decision.
+2. `post_approval_call_count` is created after approval.
+3. Therefore the feature would not exist at decision time.
+4. Using it would be data leakage.
+
+## Common Mistakes
+
+Do not say the feature is suspicious only because it has a high SHAP value. A
+high SHAP value tells you the model uses it. The timing tells you why it is bad.
+
+Do not say "correlation" when the issue is availability. The main problem here
+is not merely that the feature is correlated. The problem is that it is future
+information.
+
+Do not propose "keep it because it improves score." Leakage can improve a test
+score while making the model invalid.
+
+## What A Good Answer Looks Like
+
+A good answer names `post_approval_call_count`, identifies the trap as data
+leakage or future data, and explains that the feature is known after the
+decision rather than before it.
 
 ## Submit
 

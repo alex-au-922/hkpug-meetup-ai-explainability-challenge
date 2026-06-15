@@ -28,6 +28,41 @@ For this artifact, the interesting comparison is `trace-003` versus
 `trace-004`. The user question is the same, but the retrieval behavior changes.
 That lets you compare the system before and after a fix.
 
+## Mini Lesson
+
+Before-and-after comparison is one of the safest ways to talk about AI
+improvement. Without comparison, people often rely on vibes. They read a new
+answer, decide it sounds better, and move on. That is risky because the system
+may have improved one case while damaging another.
+
+In this mission, you only compare one case. That is not a complete evaluation
+program, but it teaches the basic habit:
+
+1. Keep the input stable.
+2. Identify what changed.
+3. Compare the relevant scores.
+4. Explain the result in plain English.
+
+The stable input is the typhoon refund question. The changed component is the
+retrieval route. The score movement tells you whether the retrieved context
+became more relevant.
+
+## Study Note
+
+Before-and-after evidence is stronger when the comparison is controlled. In a
+controlled comparison, you keep the user question the same and change one
+meaningful part of the system. Then you can talk about the result without
+mixing many causes together.
+
+Here, the user question stays the same. The important change is the retrieval
+behavior. That makes the score movement easier to interpret: the system moved
+from irrelevant context to event-policy context, so `context_relevance` rose.
+
+This is also why one passing trace is not the same as a full launch approval.
+The mission teaches the shape of the evidence, not the claim that every support
+bot case is fixed. A careful engineer would add more dataset items before
+declaring the whole app healthy.
+
 ## Guided Reading
 
 Read the two traces side by side:
@@ -41,6 +76,39 @@ Read the two traces side by side:
 
 Your answer should name both trace IDs, the changed component, and the metric
 improvement.
+
+## Worked Reading
+
+For `trace-003`, retrieval returned general venue documents, including Wi-Fi
+policy. For `trace-004`, retrieval returned weather policy, cancellation notice
+policy, and refund handling notes.
+
+That is the actual system change. The model was no longer asked to answer a
+refund question using Wi-Fi context.
+
+The metric movement is also clear:
+
+```text
+context_relevance: 0.22 -> 0.91
+```
+
+That number does not prove the entire app is perfect. It does show that this
+specific failure improved.
+
+## Common Mistakes
+
+Do not compare two different user questions. A useful before-and-after
+comparison should keep the input stable.
+
+Do not write "the answer is better" without naming the changed component.
+
+Do not ignore the score. The score is the evidence that supports the comparison.
+
+## What A Good Answer Looks Like
+
+A good answer names `trace-003` as before and `trace-004` as after, identifies
+retrieval routing as the changed component, and explains that context relevance
+improved from `0.22` to `0.91`.
 
 ## Submit
 
