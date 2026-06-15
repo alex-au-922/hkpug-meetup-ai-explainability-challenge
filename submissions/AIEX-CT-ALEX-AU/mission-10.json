@@ -1,0 +1,13 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-10",
+  "answer": {
+    "incident_type": "retrieval context mismatch",
+    "shap_lesson": "SHAP showed feature contribution, including which features push one prediction up or down.",
+    "opik_lesson": "Opik showed the trace and evaluation score that exposed the broken retrieval span.",
+    "next_action": "add test coverage for the weather-refund-policy case and monitor context relevance"
+  },
+  "evidence": [
+    "The model side showed that late_payments and credit_utilization can push a risk prediction up, while stable income can push down. The LLM app side showed trace-003 failing because retrieval returned venue Wi-Fi context for a weather refund question. The next action is to add a test and monitor the corrected retrieval path."
+  ]
+}

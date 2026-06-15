@@ -1,0 +1,19 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-03",
+  "answer": {
+    "case_id": "C-104",
+    "pushes_risk_up": [
+      "late_payments",
+      "credit_utilization"
+    ],
+    "pushes_risk_down": [
+      "stable_income",
+      "employment_months"
+    ]
+  },
+  "evidence": [
+    "For C-104, late_payments and credit_utilization pushed up the risk score with positive SHAP values.",
+    "stable_income and employment_months pushed down the risk score, but their negative values were smaller than the two risk-up forces."
+  ]
+}

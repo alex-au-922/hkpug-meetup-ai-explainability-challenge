@@ -1,0 +1,11 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-09",
+  "answer": {
+    "allowed_artifact": "redacted trace id and JSON writeup",
+    "forbidden_artifact": "secret token, credential, API key, private data, or PII"
+  },
+  "evidence": [
+    "The public repo needs no real secret because the challenge uses toy artifacts, redacted trace IDs, scores, and plain-English explanations instead of private production data."
+  ]
+}

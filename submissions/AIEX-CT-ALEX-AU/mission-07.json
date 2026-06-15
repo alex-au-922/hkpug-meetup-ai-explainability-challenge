@@ -1,0 +1,12 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-07",
+  "answer": {
+    "dataset_item": "weather-refund-policy",
+    "metric_to_watch": "context_relevance",
+    "regression_rule": "fail the regression test or alert if context relevance drops below the accepted score"
+  },
+  "evidence": [
+    "The failing trace should become a repeatable dataset test so future prompt or retrieval changes cannot silently bring the same bad answer back."
+  ]
+}
