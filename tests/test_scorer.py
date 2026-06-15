@@ -5,9 +5,11 @@ from pathlib import Path
 
 import pytest
 
+from challenge.rubric import RUBRIC_BY_ID
 from challenge.scorer import (
     PARTICIPANT_ID_RE,
     render_markdown_summary,
+    score_mission,
     score_submission_root,
 )
 
@@ -65,6 +67,28 @@ def test_missing_mission_is_reported(tmp_path: Path) -> None:
     assert result.points == 10
     assert result.max_points == 100
     assert result.missions[1].errors == ("missing mission-02.json",)
+
+
+def test_capstone_requires_cross_artifact_evidence() -> None:
+    shallow_payload = {
+        "participant_id": "AIEX-TINY",
+        "mission_id": "mission-10",
+        "answer": {
+            "incident_type": "retrieval context mismatch",
+            "shap_lesson": "SHAP explains feature contribution.",
+            "opik_lesson": "Opik explains traces.",
+            "next_action": "add test coverage and monitor the app.",
+        },
+        "evidence": [
+            "SHAP and Opik are useful together because they explain different "
+            "parts of an AI system."
+        ],
+    }
+
+    result = score_mission(RUBRIC_BY_ID["mission-10"], shallow_payload)
+
+    assert result.points < result.max_points
+    assert result.points == 2
 
 
 def test_multiple_participant_folders_require_selection(tmp_path: Path) -> None:

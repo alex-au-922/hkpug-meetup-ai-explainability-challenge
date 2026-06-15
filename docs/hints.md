@@ -66,4 +66,6 @@ credentials, and private data are not.
 
 Gentle: Do not blend SHAP and Opik into one vague "AI explainability" blob.
 
-Direct: Mention one SHAP feature, one Opik trace, and one concrete next action.
+Direct: Build a cross-artifact report. Use `C-104`, `late_payments`,
+`credit_utilization`, `stable_income`, `post_approval_call_count`, `trace-003`,
+`trace-004`, `context_relevance`, and `weather-refund-policy`.

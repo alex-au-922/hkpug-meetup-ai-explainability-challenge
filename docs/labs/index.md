@@ -42,7 +42,7 @@ Opik-style thinking.
 | 07 | Evaluation dataset | Turning a failure into a repeatable test |
 | 08 | Before/after traces | Comparing evidence before and after a fix |
 | 09 | Safe boundary | Submitting useful evidence without leaking secrets |
-| 10 | Capstone incident report | Combining SHAP and Opik lessons |
+| 10 | Capstone evidence synthesis | Combining SHAP, Opik, safety, and action planning |
 
 ## How To Write A Good Answer
 
@@ -78,3 +78,7 @@ Use your own words. The scorer checks for evidence, but the real point is that
 another human can understand your reasoning. If your answer would not help a
 teammate debug the system, add one more sentence explaining why the evidence
 matters.
+
+Mission 10 is deliberately stricter than the earlier missions. It asks you to
+combine both artifact files, compare before and after traces, name the leakage
+trap, and write a concrete next-action plan.
