@@ -33,7 +33,13 @@ Each mission file has this shape:
       "support_bot_wrong_answer": "tool or review mode",
       "leakage_feature_audit": "tool or review mode"
     },
-    "shared_failure_mode": "one sentence explaining what the failures have in common"
+    "evidence_map": {
+      "loan_case_debug": ["artifact file", "case id", "evidence section"],
+      "support_bot_wrong_answer": ["artifact file", "trace id", "bad span"],
+      "leakage_feature_audit": ["artifact file", "section", "feature name"]
+    },
+    "shared_failure_mode_code": "machine-checkable failure pattern",
+    "evidence_count": 3
   },
   "evidence": [
     "Use artifact-specific evidence. For example, distinguish prediction evidence from trace evidence and name the part of the system you inspected."

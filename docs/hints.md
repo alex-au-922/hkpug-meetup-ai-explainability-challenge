@@ -5,10 +5,11 @@ Use hints only when you are stuck. They are arranged from gentle to direct.
 ## Mission 01
 
 Gentle: Do not answer with only two tool names. Classify all three debugging
-jobs and explain what kind of evidence each job needs.
+jobs, then identify the artifact, ID, and section that proves each one.
 
 Direct: The loan case is a prediction problem, the support-bot failure is a
-trace problem, and the leakage audit is a feature-review problem.
+trace problem, and the leakage audit is a feature-review problem. Your answer
+also needs a failure-mode code and an evidence count.
 
 ## Mission 02
 

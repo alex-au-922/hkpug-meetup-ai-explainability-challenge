@@ -61,10 +61,25 @@ def test_missing_mission_is_reported(tmp_path: Path) -> None:
                 "support_bot_wrong_answer": "Opik",
                 "leakage_feature_audit": "SHAP model review",
             },
-            "shared_failure_mode": (
-                "Both jobs start with a wrong output and need evidence to show "
-                "where the failure happened."
-            ),
+            "evidence_map": {
+                "loan_case_debug": [
+                    "loan_risk_casebook.json",
+                    "C-104",
+                    "shap_values",
+                ],
+                "support_bot_wrong_answer": [
+                    "support_bot_traces.json",
+                    "trace-003",
+                    "retrieval",
+                ],
+                "leakage_feature_audit": [
+                    "loan_risk_casebook.json",
+                    "known_trap",
+                    "post_approval_call_count",
+                ],
+            },
+            "shared_failure_mode_code": "wrong_output_needs_artifact_evidence",
+            "evidence_count": 3,
         },
         "evidence": [
             "A loan prediction needs feature-contribution evidence, so SHAP is "
@@ -105,7 +120,7 @@ def test_old_keyword_only_mission_one_answer_is_not_full_credit() -> None:
     result = score_mission(RUBRIC_BY_ID["mission-01"], shallow_payload)
 
     assert result.points < result.max_points
-    assert result.points == 2
+    assert result.points == 0
 
 
 def test_capstone_requires_cross_artifact_evidence() -> None:

@@ -93,14 +93,15 @@ Opik-side object.
 ## Scored Questions
 
 Your answer is not just "SHAP and Opik." You must classify all three jobs and
-explain the shared failure pattern.
+identify the exact evidence source for each job.
 
 Answer these questions:
 
 1. Which workflow would you use for the loan case, and why?
 2. Which workflow would you use for the support-bot wrong answer, and why?
 3. Which workflow would you use for the leakage feature audit, and why?
-4. What do the cases have in common beyond the tool names?
+4. Which shared failure-mode code describes the pattern?
+5. How many separate evidence sources did you identify?
 
 ## Submit
 
@@ -122,7 +123,13 @@ Example shape:
       "support_bot_wrong_answer": "tool or review mode",
       "leakage_feature_audit": "tool or review mode"
     },
-    "shared_failure_mode": "what the failures have in common"
+    "evidence_map": {
+      "loan_case_debug": ["artifact file", "case id", "evidence section"],
+      "support_bot_wrong_answer": ["artifact file", "trace id", "bad span"],
+      "leakage_feature_audit": ["artifact file", "section", "feature name"]
+    },
+    "shared_failure_mode_code": "machine-checkable failure pattern",
+    "evidence_count": 3
   },
   "evidence": [
     "Explain the prediction evidence and the trace evidence in your own words."
