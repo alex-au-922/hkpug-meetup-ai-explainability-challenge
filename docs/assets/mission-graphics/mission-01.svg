@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 01 tool triage infographic</title>
+  <desc id="desc">Three debugging jobs mapped to SHAP, Opik, and feature audit evidence.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.panel{fill:#fff;stroke:#dfe5e7;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.soft{fill:#f2f4f5}.line{stroke:#9aa8ad;stroke-width:3;fill:none;marker-end:url(#arrow)}.small{font:600 22px system-ui,sans-serif}.body{font:500 24px system-ui,sans-serif}.label{font:700 28px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2 2 L10 6 L2 10 Z" fill="#9aa8ad"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="420" rx="0"/>
+  <text x="46" y="56" class="title ink">Mission 01: pick the right evidence workflow</text>
+  <text x="46" y="91" class="body muted">Do not answer with only tool names. Identify the artifact and evidence location.</text>
+  <rect x="46" y="132" width="316" height="210" rx="8" class="panel"/>
+  <text x="70" y="176" class="label teal">Loan case</text>
+  <text x="70" y="214" class="body ink">C-104 prediction</text>
+  <text x="70" y="250" class="body muted">loan_risk_casebook.json</text>
+  <text x="70" y="286" class="body muted">shap_values</text>
+  <path d="M362 237 H430" class="line"/>
+  <rect x="430" y="164" width="150" height="146" rx="8" class="soft"/>
+  <text x="478" y="226" class="label orange">SHAP</text>
+  <text x="462" y="262" class="small muted">features</text>
+  <rect x="620" y="132" width="250" height="210" rx="8" class="panel"/>
+  <text x="644" y="176" class="label teal">Bot failure</text>
+  <text x="644" y="214" class="body ink">trace-003</text>
+  <text x="644" y="250" class="body muted">support_bot_traces.json</text>
+  <text x="644" y="286" class="body muted">retrieval span</text>
+  <path d="M870 237 H938" class="line"/>
+  <rect x="938" y="164" width="150" height="146" rx="8" class="soft"/>
+  <text x="974" y="226" class="label orange">Opik</text>
+  <text x="971" y="262" class="small muted">traces</text>
+  <rect x="430" y="346" width="658" height="46" rx="8" fill="#fff" stroke="#dfe5e7" stroke-width="2"/>
+  <text x="454" y="377" class="small ink">Feature audit: known_trap -> post_approval_call_count -> model review</text>
+</svg>

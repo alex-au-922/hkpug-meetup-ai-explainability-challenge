@@ -6,6 +6,8 @@ This mission teaches a critical warning: explanation is not the same thing as
 approval. SHAP can show that a feature influenced the model, but humans still
 need to decide whether that feature is valid and safe to use.
 
+![Mission 04 infographic](../assets/mission-graphics/mission-04.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

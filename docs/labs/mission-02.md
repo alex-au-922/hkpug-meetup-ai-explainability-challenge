@@ -8,6 +8,8 @@ means you are looking across many examples, not explaining just one row.
 By the end of this mission, you should be able to open a SHAP-style summary and
 identify which features usually move the model output the most.
 
+![Mission 02 infographic](../assets/mission-graphics/mission-02.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

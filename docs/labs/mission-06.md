@@ -9,6 +9,8 @@ In Opik-style debugging, the important habit is not "the bot was wrong." The
 important habit is "the bot was wrong because this step produced this bad
 evidence."
 
+![Mission 06 infographic](../assets/mission-graphics/mission-06.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

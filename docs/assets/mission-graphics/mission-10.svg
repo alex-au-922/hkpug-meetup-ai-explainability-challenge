@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 10 capstone synthesis infographic</title>
+  <desc id="desc">Capstone combines SHAP, Opik, leakage, regression, safety, and action planning.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.box{fill:#fff;stroke:#dfe5e7;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.line{stroke:#9aa8ad;stroke-width:3;fill:none;marker-end:url(#arrow)}.body{font:500 23px system-ui,sans-serif}.small{font:600 19px system-ui,sans-serif}.label{font:700 27px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2 2 L10 6 L2 10 Z" fill="#9aa8ad"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 10: write the whole incident story</text>
+  <text x="46" y="91" class="body muted">The capstone checks whether participants can connect model and app evidence.</text>
+  <rect x="54" y="140" width="230" height="130" rx="8" class="box"/>
+  <text x="84" y="182" class="label teal">SHAP thread</text><text x="84" y="220" class="small ink">C-104 force balance</text><text x="84" y="252" class="small muted">local evidence</text>
+  <path d="M284 205 H344" class="line"/>
+  <rect x="344" y="140" width="230" height="130" rx="8" class="box"/>
+  <text x="374" y="182" class="label orange">Audit thread</text><text x="374" y="220" class="small ink">leakage feature</text><text x="374" y="252" class="small muted">remove + retrain</text>
+  <path d="M574 205 H634" class="line"/>
+  <rect x="634" y="140" width="230" height="130" rx="8" class="box"/>
+  <text x="664" y="182" class="label teal">Opik thread</text><text x="664" y="220" class="small ink">trace-003 to 004</text><text x="664" y="252" class="small muted">metric shift</text>
+  <path d="M864 205 H924" class="line"/>
+  <rect x="924" y="140" width="230" height="130" rx="8" class="box"/>
+  <text x="954" y="182" class="label orange">Action plan</text><text x="954" y="220" class="small ink">gate + safety</text><text x="954" y="252" class="small muted">monitor quality</text>
+  <rect x="178" y="326" width="844" height="52" rx="8" class="box"/>
+  <text x="212" y="360" class="body ink">Assessing: can they synthesize evidence into an incident report with next actions?</text>
+</svg>

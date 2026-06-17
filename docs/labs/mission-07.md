@@ -6,6 +6,8 @@ This mission teaches the difference between noticing a failure and preventing a
 regression. A trace explains what went wrong once. An evaluation dataset helps
 you check whether the same thing goes wrong again.
 
+![Mission 07 infographic](../assets/mission-graphics/mission-07.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

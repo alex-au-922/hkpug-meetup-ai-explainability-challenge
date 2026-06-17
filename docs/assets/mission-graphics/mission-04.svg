@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 04 leakage audit infographic</title>
+  <desc id="desc">Decision-time availability test rejects a future feature and keeps before-decision features.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.panel{fill:#fff;stroke:#dfe5e7;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.bad{fill:#fff3ed;stroke:#c85f38;stroke-width:2}.good{fill:#eef3f5;stroke:#2b6f7a;stroke-width:2}.axis{stroke:#9aa8ad;stroke-width:4}.tick{stroke:#9aa8ad;stroke-width:3}.body{font:500 24px system-ui,sans-serif}.small{font:600 20px system-ui,sans-serif}.label{font:700 27px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 04: ask whether the feature exists at decision time</text>
+  <text x="46" y="91" class="body muted">SHAP can show importance. The audit decides whether the feature is valid.</text>
+  <line x1="110" y1="230" x2="1088" y2="230" class="axis"/>
+  <line x1="300" y1="202" x2="300" y2="258" class="tick"/><text x="228" y="292" class="small ink">Before decision</text>
+  <line x1="600" y1="190" x2="600" y2="270" class="tick"/><text x="530" y="310" class="label teal">Approval</text>
+  <line x1="900" y1="202" x2="900" y2="258" class="tick"/><text x="828" y="292" class="small ink">After decision</text>
+  <rect x="170" y="128" width="270" height="74" rx="8" class="good"/>
+  <text x="198" y="174" class="label teal">employment_months</text>
+  <rect x="756" y="128" width="330" height="74" rx="8" class="bad"/>
+  <text x="784" y="174" class="label orange">post_approval_call_count</text>
+  <rect x="90" y="336" width="1010" height="50" rx="8" class="panel"/>
+  <text x="118" y="369" class="body ink">Reject future data: remove the feature, retrain, and audit decision-time availability.</text>
+</svg>

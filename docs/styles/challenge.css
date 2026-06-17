@@ -54,6 +54,17 @@
   border-radius: 5px;
 }
 
+.md-typeset img.mission-infographic {
+  display: block;
+  width: 100%;
+  max-width: 58rem;
+  margin: 1.25rem 0 1.75rem;
+  border: 1px solid var(--hkpug-line);
+  border-radius: 8px;
+  background: #f7f8f9;
+  box-shadow: 0 1px 2px rgba(23, 33, 38, 0.05);
+}
+
 .scoreboard-panel {
   max-width: 58rem;
   margin-top: 1.25rem;

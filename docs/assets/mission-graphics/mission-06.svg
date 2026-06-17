@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 06 trace diagnosis infographic</title>
+  <desc id="desc">RAG trace path showing retrieval as the first bad span and low evaluator scores.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.box{fill:#fff;stroke:#dfe5e7;stroke-width:2}.bad{fill:#fff3ed;stroke:#c85f38;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.line{stroke:#9aa8ad;stroke-width:3;fill:none;marker-end:url(#arrow)}.body{font:500 23px system-ui,sans-serif}.small{font:600 19px system-ui,sans-serif}.label{font:700 26px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2 2 L10 6 L2 10 Z" fill="#9aa8ad"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 06: find the first bad span</text>
+  <text x="46" y="91" class="body muted">Do not blame "the AI" until you inspect the trace path.</text>
+  <rect x="54" y="142" width="220" height="120" rx="8" class="box"/>
+  <text x="84" y="185" class="label teal">User</text><text x="84" y="224" class="small ink">typhoon refund?</text>
+  <path d="M274 202 H336" class="line"/>
+  <rect x="336" y="142" width="260" height="120" rx="8" class="bad"/>
+  <text x="366" y="185" class="label orange">Retrieval</text><text x="366" y="224" class="small ink">venue wifi context</text>
+  <path d="M596 202 H658" class="line"/>
+  <rect x="658" y="142" width="220" height="120" rx="8" class="box"/>
+  <text x="688" y="185" class="label teal">LLM call</text><text x="688" y="224" class="small ink">uses bad notes</text>
+  <path d="M878 202 H940" class="line"/>
+  <rect x="940" y="142" width="210" height="120" rx="8" class="bad"/>
+  <text x="970" y="185" class="label orange">Answer</text><text x="970" y="224" class="small ink">Wi-Fi reply</text>
+  <rect x="250" y="320" width="700" height="54" rx="8" class="box"/>
+  <text x="278" y="355" class="body ink">trace-003 scores: context_relevance 0.22, answer_correctness 0.08</text>
+</svg>

@@ -6,6 +6,8 @@ This mission teaches you to turn model evidence into an engineering note. A
 useful explanation should lead to a next action. Otherwise, it is just a nice
 chart.
 
+![Mission 05 infographic](../assets/mission-graphics/mission-05.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

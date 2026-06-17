@@ -19,6 +19,8 @@ By the end, you should be able to explain:
 This is intentionally harder than the earlier missions. A short answer with
 "SHAP explains features and Opik explains traces" is no longer enough.
 
+![Mission 10 infographic](../assets/mission-graphics/mission-10.svg){ .mission-infographic }
+
 ## Artifacts
 
 ```text

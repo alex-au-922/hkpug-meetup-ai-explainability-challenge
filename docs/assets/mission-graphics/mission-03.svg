@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 03 local SHAP force balance infographic</title>
+  <desc id="desc">Base probability moves upward and downward through SHAP contributions to a false positive prediction.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.panel{fill:#fff;stroke:#dfe5e7;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.up{fill:#fff3ed;stroke:#c85f38;stroke-width:2}.down{fill:#eef3f5;stroke:#2b6f7a;stroke-width:2}.line{stroke:#9aa8ad;stroke-width:3;fill:none;marker-end:url(#arrow)}.body{font:500 24px system-ui,sans-serif}.small{font:600 20px system-ui,sans-serif}.label{font:700 26px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2 2 L10 6 L2 10 Z" fill="#9aa8ad"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 03: compute one prediction's force balance</text>
+  <text x="46" y="91" class="body muted">For C-104, explain how local SHAP moves 0.32 to 0.59.</text>
+  <rect x="58" y="156" width="160" height="106" rx="8" class="panel"/>
+  <text x="90" y="198" class="label ink">Base</text><text x="91" y="236" class="label teal">0.32</text>
+  <path d="M218 209 H294" class="line"/>
+  <rect x="294" y="126" width="210" height="86" rx="8" class="up"/>
+  <text x="319" y="162" class="small ink">late_payments</text><text x="319" y="194" class="label orange">+0.24</text>
+  <rect x="294" y="228" width="210" height="86" rx="8" class="up"/>
+  <text x="319" y="264" class="small ink">credit_utilization</text><text x="319" y="296" class="label orange">+0.18</text>
+  <path d="M504 209 H582" class="line"/>
+  <rect x="582" y="126" width="200" height="86" rx="8" class="down"/>
+  <text x="607" y="162" class="small ink">stable_income</text><text x="607" y="194" class="label teal">-0.09</text>
+  <rect x="582" y="228" width="200" height="86" rx="8" class="down"/>
+  <text x="607" y="264" class="small ink">employment_months</text><text x="607" y="296" class="label teal">-0.06</text>
+  <path d="M782 209 H860" class="line"/>
+  <rect x="860" y="156" width="220" height="106" rx="8" class="panel"/>
+  <text x="894" y="198" class="label ink">Prediction</text><text x="895" y="236" class="label orange">0.59</text>
+  <text x="58" y="356" class="body ink">Net delta: +0.24 +0.18 -0.09 -0.06 = +0.27. Actual label: paid_on_time, so this is a false positive.</text>
+</svg>

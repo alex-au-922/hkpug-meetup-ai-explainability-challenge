@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 02 global SHAP ranking infographic</title>
+  <desc id="desc">Feature importance bars ranked by mean_abs_shap with margin and review risk.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.panel{fill:#fff;stroke:#dfe5e7;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.bar{fill:#2b6f7a}.bar2{fill:#6f858b}.risk{fill:#fff3ed;stroke:#c85f38;stroke-width:2}.body{font:500 24px system-ui,sans-serif}.small{font:600 21px system-ui,sans-serif}.label{font:700 27px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 02: rank global SHAP, then question the model</text>
+  <text x="46" y="91" class="body muted">Sort by mean_abs_shap, calculate the top margin, and flag review risk.</text>
+  <rect x="46" y="126" width="710" height="250" rx="8" class="panel"/>
+  <text x="76" y="171" class="label ink">Global ranking</text>
+  <text x="76" y="218" class="small ink">late_payments</text><rect x="330" y="196" width="310" height="30" rx="4" class="bar"/><text x="660" y="219" class="small ink">0.31</text>
+  <text x="76" y="264" class="small ink">credit_utilization</text><rect x="330" y="242" width="240" height="30" rx="4" class="bar"/><text x="590" y="265" class="small ink">0.24</text>
+  <text x="76" y="310" class="small ink">stable_income</text><rect x="330" y="288" width="170" height="30" rx="4" class="bar2"/><text x="520" y="311" class="small ink">0.17</text>
+  <text x="76" y="356" class="small muted">top margin = 0.31 - 0.24 = 0.07</text>
+  <rect x="802" y="126" width="330" height="250" rx="8" class="risk"/>
+  <text x="832" y="171" class="label orange">Review risk</text>
+  <text x="832" y="214" class="body ink">post_approval_call_count</text>
+  <text x="832" y="254" class="body muted">mean_abs_shap: 0.09</text>
+  <text x="832" y="294" class="body muted">Known after decision</text>
+  <text x="832" y="334" class="small ink">Lower rank can still be invalid.</text>
+</svg>

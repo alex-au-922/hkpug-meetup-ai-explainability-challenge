@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 08 before after trace comparison infographic</title>
+  <desc id="desc">Trace 003 and trace 004 compare the same question with improved scores after retrieval routing.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.panel{fill:#fff;stroke:#dfe5e7;stroke-width:2}.bad{fill:#fff3ed;stroke:#c85f38;stroke-width:2}.good{fill:#eef3f5;stroke:#2b6f7a;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.body{font:500 23px system-ui,sans-serif}.small{font:600 19px system-ui,sans-serif}.label{font:700 27px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 08: prove improvement with a controlled comparison</text>
+  <text x="46" y="91" class="body muted">Same question, changed retrieval route, measurable score movement.</text>
+  <rect x="80" y="132" width="450" height="210" rx="8" class="bad"/>
+  <text x="112" y="178" class="label orange">Before: trace-003</text>
+  <text x="112" y="220" class="body ink">retrieval: venue Wi-Fi context</text>
+  <text x="112" y="262" class="body ink">context_relevance: 0.22</text>
+  <text x="112" y="304" class="body ink">answer_correctness: 0.08</text>
+  <rect x="670" y="132" width="450" height="210" rx="8" class="good"/>
+  <text x="702" y="178" class="label teal">After: trace-004</text>
+  <text x="702" y="220" class="body ink">retrieval: event-policy collection</text>
+  <text x="702" y="262" class="body ink">context_relevance: 0.91</text>
+  <text x="702" y="304" class="body ink">answer_correctness: 0.86</text>
+  <rect x="418" y="354" width="364" height="44" rx="8" class="panel"/>
+  <text x="452" y="383" class="small ink">Deltas: +0.69 context, +0.78 correctness</text>
+</svg>

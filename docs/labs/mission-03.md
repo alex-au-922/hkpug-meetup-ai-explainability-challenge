@@ -9,6 +9,8 @@ The case is intentionally interesting: the model predicted risk, but the actual
 label says the person paid on time. Your job is not to defend the model. Your
 job is to explain why the model behaved that way.
 
+![Mission 03 infographic](../assets/mission-graphics/mission-03.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

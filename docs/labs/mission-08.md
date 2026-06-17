@@ -6,6 +6,8 @@ This mission teaches evidence-based comparison. In AI work, it is easy to say a
 change "feels better." This mission asks you to prove improvement with a before
 trace, an after trace, and a score movement.
 
+![Mission 08 infographic](../assets/mission-graphics/mission-08.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

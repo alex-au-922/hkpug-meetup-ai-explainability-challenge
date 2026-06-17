@@ -6,6 +6,8 @@ This mission teaches safe evidence handling. Observability is powerful because
 it gives teams visibility into real requests. That same visibility can expose
 private information if people are careless.
 
+![Mission 09 infographic](../assets/mission-graphics/mission-09.svg){ .mission-infographic }
+
 ## Artifact
 
 ```text

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 07 regression gate infographic</title>
+  <desc id="desc">Failed trace becomes a dataset item with expected context and metric thresholds.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.box{fill:#fff;stroke:#dfe5e7;stroke-width:2}.gate{fill:#eef3f5;stroke:#2b6f7a;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.line{stroke:#9aa8ad;stroke-width:3;fill:none;marker-end:url(#arrow)}.body{font:500 23px system-ui,sans-serif}.small{font:600 19px system-ui,sans-serif}.label{font:700 26px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2 2 L10 6 L2 10 Z" fill="#9aa8ad"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 07: turn a trace failure into a regression gate</text>
+  <text x="46" y="91" class="body muted">A saved dataset item prevents the same failure from quietly returning.</text>
+  <rect x="66" y="142" width="230" height="128" rx="8" class="box"/>
+  <text x="96" y="184" class="label orange">Failure</text><text x="96" y="222" class="small ink">trace-003</text><text x="96" y="252" class="small muted">wrong context</text>
+  <path d="M296 206 H358" class="line"/>
+  <rect x="358" y="142" width="260" height="128" rx="8" class="box"/>
+  <text x="388" y="184" class="label teal">Dataset item</text><text x="388" y="222" class="small ink">weather-refund-policy</text><text x="388" y="252" class="small muted">save input</text>
+  <path d="M618 206 H680" class="line"/>
+  <rect x="680" y="142" width="250" height="128" rx="8" class="gate"/>
+  <text x="710" y="184" class="label teal">Quality gate</text><text x="710" y="222" class="small ink">context >= 0.85</text><text x="710" y="252" class="small ink">correct >= 0.80</text>
+  <path d="M930 206 H992" class="line"/>
+  <rect x="992" y="142" width="150" height="128" rx="8" class="box"/>
+  <text x="1022" y="184" class="label orange">Action</text><text x="1022" y="222" class="small ink">fail</text><text x="1022" y="252" class="small ink">block</text>
+  <text x="94" y="344" class="body ink">Assessing: can the participant turn observability evidence into an automated release check?</text>
+</svg>

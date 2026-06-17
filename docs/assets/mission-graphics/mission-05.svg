@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 05 model incident note infographic</title>
+  <desc id="desc">Incident note structure from affected case through fix plan.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.box{fill:#fff;stroke:#dfe5e7;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.line{stroke:#9aa8ad;stroke-width:3;fill:none;marker-end:url(#arrow)}.body{font:500 23px system-ui,sans-serif}.small{font:600 19px system-ui,sans-serif}.label{font:700 27px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2 2 L10 6 L2 10 Z" fill="#9aa8ad"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 05: turn explanation into an incident note</text>
+  <text x="46" y="91" class="body muted">The answer must be operational: what failed, why, and what changes next.</text>
+  <rect x="54" y="140" width="210" height="130" rx="8" class="box"/>
+  <text x="84" y="182" class="label teal">Case</text><text x="84" y="220" class="body ink">C-104</text><text x="84" y="252" class="small muted">false positive</text>
+  <path d="M264 205 H326" class="line"/>
+  <rect x="326" y="140" width="230" height="130" rx="8" class="box"/>
+  <text x="356" y="182" class="label teal">Drivers</text><text x="356" y="220" class="small ink">late_payments</text><text x="356" y="252" class="small ink">stable_income</text>
+  <path d="M556 205 H618" class="line"/>
+  <rect x="618" y="140" width="238" height="130" rx="8" class="box"/>
+  <text x="648" y="182" class="label orange">Risk</text><text x="648" y="220" class="small ink">leakage feature</text><text x="648" y="252" class="small ink">post approval</text>
+  <path d="M856 205 H918" class="line"/>
+  <rect x="918" y="140" width="230" height="130" rx="8" class="box"/>
+  <text x="948" y="182" class="label teal">Fix</text><text x="948" y="220" class="small ink">remove + audit</text><text x="948" y="252" class="small ink">retrain + retest</text>
+  <text x="74" y="343" class="body ink">Assessing: can a participant write a concise engineering note instead of only describing a chart?</text>
+</svg>

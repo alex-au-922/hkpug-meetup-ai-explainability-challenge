@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" width="1200" height="420" viewBox="0 0 1200 420">
+  <title id="title">Mission 09 safe evidence boundary infographic</title>
+  <desc id="desc">Safe public evidence compared with forbidden private or secret evidence.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f8f9}.safe{fill:#eef3f5;stroke:#2b6f7a;stroke-width:2}.bad{fill:#fff3ed;stroke:#c85f38;stroke-width:2}.ink{fill:#172126}.muted{fill:#66757a}.teal{fill:#2b6f7a}.orange{fill:#c85f38}.body{font:500 24px system-ui,sans-serif}.small{font:600 20px system-ui,sans-serif}.label{font:700 30px system-ui,sans-serif}.title{font:800 34px system-ui,sans-serif}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="420"/>
+  <text x="46" y="56" class="title ink">Mission 09: submit evidence without leaking evidence</text>
+  <text x="46" y="91" class="body muted">Public challenge submissions should be useful, redacted, and safe.</text>
+  <rect x="80" y="132" width="470" height="230" rx="8" class="safe"/>
+  <text x="116" y="182" class="label teal">Safe bundle</text>
+  <text x="116" y="230" class="body ink">redacted trace IDs</text>
+  <text x="116" y="268" class="body ink">evaluator scores</text>
+  <text x="116" y="306" class="body ink">plain-English diagnosis</text>
+  <rect x="650" y="132" width="470" height="230" rx="8" class="bad"/>
+  <text x="686" y="182" class="label orange">Forbidden bundle</text>
+  <text x="686" y="230" class="body ink">API keys or access tokens</text>
+  <text x="686" y="268" class="body ink">credentials or personal data</text>
+  <text x="686" y="306" class="body ink">private user messages</text>
+</svg>
