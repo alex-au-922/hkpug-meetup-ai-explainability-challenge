@@ -7,7 +7,25 @@
       "support_bot_wrong_answer": "Opik",
       "leakage_feature_audit": "SHAP model review"
     },
-    "shared_failure_mode": "Both jobs start with a wrong outcome and need evidence, but the evidence lives in different places."
+    "evidence_map": {
+      "loan_case_debug": [
+        "loan_risk_casebook.json",
+        "C-104",
+        "shap_values"
+      ],
+      "support_bot_wrong_answer": [
+        "support_bot_traces.json",
+        "trace-003",
+        "retrieval"
+      ],
+      "leakage_feature_audit": [
+        "loan_risk_casebook.json",
+        "known_trap",
+        "post_approval_call_count"
+      ]
+    },
+    "shared_failure_mode_code": "wrong_output_needs_artifact_evidence",
+    "evidence_count": 3
   },
   "evidence": [
     "The loan case is a model prediction problem, so the relevant evidence is feature contribution for a row. The support bot failure is a request path problem, so the relevant evidence is the trace of retrieval, prompt, model output, and evaluator scores."
