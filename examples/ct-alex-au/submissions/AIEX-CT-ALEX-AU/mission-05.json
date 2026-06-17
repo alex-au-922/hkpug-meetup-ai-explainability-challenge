@@ -2,11 +2,13 @@
   "participant_id": "AIEX-CT-ALEX-AU",
   "mission_id": "mission-05",
   "answer": {
-    "symptom": "Case C-104 was predicted as late repayment risk even though the borrower paid on time.",
-    "root_cause": "The model may over-trust shortcut risk features, and the feature audit found leakage risk.",
-    "fix": "Remove the leaking feature, audit decision-time availability, retrain the model, and compare errors again."
+    "affected_case": "C-104",
+    "incident_class": "false positive: the model over-predicted risk for a paid_on_time case",
+    "local_drivers": "late_payments and credit_utilization pushed risk up, while stable_income pushed risk down",
+    "systemic_risk": "post_approval_call_count leakage could make model review invalid if used at approval time",
+    "fix_plan": "remove the leaking feature, audit decision-time availability, retrain the model, and compare false-positive errors again"
   },
   "evidence": [
-    "C-104 shows late_payments and credit_utilization pushing risk upward while stable income pushes risk downward. The known trap says post_approval_call_count is leakage because it exists after the decision."
+    "C-104 shows late_payments and credit_utilization pushing risk upward while stable_income and employment_months push risk downward, but the final prediction still becomes late_repayment_risk despite the paid_on_time actual label. The known trap says post_approval_call_count is leakage because it exists after the decision, so the incident note needs both local error evidence and systemic feature-audit evidence."
   ]
 }

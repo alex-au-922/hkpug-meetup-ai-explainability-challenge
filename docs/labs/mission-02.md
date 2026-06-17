@@ -1,4 +1,4 @@
-# Mission 02: Read A Global SHAP Summary
+# Mission 02: Rank Global SHAP And Flag Review Risk
 
 ## Learning Objective
 
@@ -21,7 +21,9 @@ Open the `global_summary` section.
 `mean_abs_shap` means average strength. The sign is ignored because this summary
 only asks "how much does this feature usually move the score?"
 
-The largest value is the top global feature.
+The largest value is the top global feature. In this mission, you also need to
+calculate the margin between the first and second features and flag the feature
+that deserves a separate review.
 
 This is different from a local explanation. A global summary is useful for
 understanding the model's general behavior, but it does not explain every single
@@ -75,8 +77,9 @@ Open the `global_summary` list. Each item has:
 - a `mean_abs_shap` value
 - a plain-English note
 
-Sort the values in your head from largest to smallest. The two largest values
-are the answer.
+Sort the values from largest to smallest. Keep the top three, calculate the
+first-minus-second margin, and inspect the notes for any feature that sounds
+unsafe or suspicious.
 
 ## Worked Reading
 
@@ -95,8 +98,9 @@ Read that as:
 > Across the dataset, `late_payments` usually makes a large movement in the
 > model score.
 
-Then compare it with the other rows. The answer is not hidden in a trick. The
-largest `mean_abs_shap` is first place. The next largest is second place.
+Then compare it with the other rows. The ranking is numerical, but the review
+risk is semantic: the feature note tells you whether the model may be using a
+shortcut that should not be trusted.
 
 ## Common Mistakes
 
@@ -109,11 +113,14 @@ model's average behavior across many examples.
 Do not ignore the feature names. Your answer should use exact names from the
 artifact so the scorer and a human reviewer can follow your reasoning.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer says which feature is first, which feature is second, and why. The
-evidence should mention `mean_abs_shap`, "average absolute SHAP," or "largest
-bar/value." That tells the reviewer you used the right part of the artifact.
+A complete answer does four things:
+
+1. Ranks the top three features by `mean_abs_shap`.
+2. Calculates the margin between the first and second ranked features.
+3. Names the feature that should be reviewed even though it is not the largest.
+4. Explains the answer with values from the artifact, not only feature names.
 
 ## Submit
 
@@ -122,16 +129,17 @@ bar/value." That tells the reviewer you used the right part of the artifact.
   "participant_id": "AIEX-YOUR-TEAM",
   "mission_id": "mission-02",
   "answer": {
-    "top_global_feature": "feature_name_here",
-    "second_global_feature": "feature_name_here"
+    "top_three_features": ["first", "second", "third"],
+    "top_feature_margin": "first mean_abs_shap minus second mean_abs_shap",
+    "review_risk_feature": "feature that needs human review"
   },
   "evidence": [
-    "The largest mean absolute SHAP value belongs to ...",
-    "The next largest bar/value belongs to ..."
+    "Use mean_abs_shap values to justify the ranking and margin."
   ]
 }
 ```
 
 ## Beginner Translation
 
-If global SHAP were a bar chart, this mission asks which two bars are tallest.
+If global SHAP were a bar chart, this mission asks which bars are tallest, how
+far ahead first place is, and whether one shorter bar is suspicious anyway.

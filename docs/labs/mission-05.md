@@ -98,11 +98,15 @@ does not know what to do next.
 Do not invent evidence outside the artifact. Use case IDs and feature names from
 the provided JSON.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer has a concrete symptom, a root cause that mentions leakage or
-over-trust in shortcut features, a fix that removes or audits the bad feature,
-and evidence specific enough for another person to verify.
+A complete incident note does five things:
+
+1. Names the affected case.
+2. Classifies the incident using the prediction and actual label.
+3. Names both the risk-up and risk-down local drivers.
+4. Connects the local failure to the systemic leakage risk.
+5. Gives a concrete fix plan that can be implemented and re-tested.
 
 ## Submit
 
@@ -111,9 +115,11 @@ and evidence specific enough for another person to verify.
   "participant_id": "AIEX-YOUR-TEAM",
   "mission_id": "mission-05",
   "answer": {
-    "symptom": "short plain-English symptom",
-    "root_cause": "short root cause",
-    "fix": "short fix"
+    "affected_case": "case id",
+    "incident_class": "what kind of incident is this?",
+    "local_drivers": "risk-up and risk-down features",
+    "systemic_risk": "feature or pattern that could affect more than one case",
+    "fix_plan": "concrete next action"
   },
   "evidence": [
     "Use exact feature names and case IDs from the artifact so a reviewer can follow your reasoning."

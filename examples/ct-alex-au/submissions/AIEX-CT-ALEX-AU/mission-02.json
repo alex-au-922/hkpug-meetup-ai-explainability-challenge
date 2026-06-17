@@ -2,11 +2,15 @@
   "participant_id": "AIEX-CT-ALEX-AU",
   "mission_id": "mission-02",
   "answer": {
-    "top_global_feature": "late_payments",
-    "second_global_feature": "credit_utilization"
+    "top_three_features": [
+      "late_payments",
+      "credit_utilization",
+      "stable_income"
+    ],
+    "top_feature_margin": "late_payments exceeds credit_utilization by 0.07 mean_abs_shap",
+    "review_risk_feature": "post_approval_call_count"
   },
   "evidence": [
-    "In the global summary, late_payments has the largest mean absolute SHAP value at 0.31, so it is the tallest average driver.",
-    "credit_utilization has the next largest bar/value at 0.24, making it the second strongest global feature."
+    "The global_summary ranks features by mean_abs_shap. late_payments is 0.31, credit_utilization is 0.24, and stable_income is 0.17, so the top-two margin is 0.31 - 0.24 = 0.07. post_approval_call_count is lower at 0.09 but is still a review risk because the note says it is only known after the loan decision."
   ]
 }

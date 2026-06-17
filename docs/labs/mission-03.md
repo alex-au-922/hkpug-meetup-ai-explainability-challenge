@@ -1,4 +1,4 @@
-# Mission 03: Explain One Wrong Prediction
+# Mission 03: Compute The Local SHAP Force Balance
 
 ## Learning Objective
 
@@ -28,7 +28,8 @@ For this challenge:
 - positive SHAP values push risk up
 - negative SHAP values push risk down
 
-Do not just list every field. Say which forces won.
+Do not just list every field. Say which forces won, and calculate the net
+movement from the base probability to the predicted probability.
 
 The phrase "forces won" is useful because local SHAP is a push-and-pull story.
 Some features push the score upward. Other features pull it downward. The final
@@ -86,7 +87,8 @@ Then group the features into two buckets:
 | `pushes_risk_up` | Features that made the model more worried |
 | `pushes_risk_down` | Features that made the model less worried |
 
-Your explanation should mention both buckets.
+Your explanation should mention both buckets, the strongest feature on each
+side, the net movement, and the error type.
 
 ## Worked Reading
 
@@ -133,12 +135,15 @@ the evidence for the model's concern and the evidence that pulled the other way.
 Do not write only numbers. Numbers are evidence, but the mission asks for an
 explanation.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer names case `C-104`, puts `late_payments` and
-`credit_utilization` in the risk-up bucket, and puts at least one stabilizing
-feature in the risk-down bucket. The evidence should use phrases like "pushed
-up," "pushed down," "raised," or "lowered."
+A complete answer does five things:
+
+1. Confirms the case being explained.
+2. Names the strongest positive SHAP feature.
+3. Names the strongest negative SHAP feature.
+4. Calculates the net movement from base probability to predicted probability.
+5. Classifies the model error using the prediction and actual label.
 
 ## Submit
 
@@ -148,12 +153,13 @@ up," "pushed down," "raised," or "lowered."
   "mission_id": "mission-03",
   "answer": {
     "case_id": "C-104",
-    "pushes_risk_up": ["feature_a", "feature_b"],
-    "pushes_risk_down": ["feature_c"]
+    "strongest_positive_feature": "feature name",
+    "strongest_negative_feature": "feature name",
+    "net_shap_delta": "predicted probability minus base probability",
+    "error_type": "what kind of model error happened?"
   },
   "evidence": [
-    "The prediction was pushed up by ... and pushed down by ...",
-    "The risk-up values were larger than the risk-down values, so the model crossed the risk threshold."
+    "Use the base probability, predicted probability, and named SHAP values to explain the force balance."
   ]
 }
 ```

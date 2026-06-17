@@ -1,4 +1,4 @@
-# Mission 09: Safe Evidence Boundary
+# Mission 09: Build A Safe Public Evidence Bundle
 
 ## Learning Objective
 
@@ -108,11 +108,14 @@ public challenge.
 
 Do not include personal data from real users. The challenge artifacts are enough.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer names one safe artifact, one forbidden artifact, and explains that
-the repo needs no real secrets because the scoring task is based on redacted toy
-evidence.
+A complete safe-evidence answer does four things:
+
+1. Describes the bundle that is safe to submit.
+2. Describes the bundle that must never be submitted.
+3. Gives a redaction rule for public repositories.
+4. Explains why the toy artifacts are enough for scoring.
 
 ## Submit
 
@@ -121,11 +124,12 @@ evidence.
   "participant_id": "AIEX-YOUR-TEAM",
   "mission_id": "mission-09",
   "answer": {
-    "allowed_artifact": "safe thing to submit",
-    "forbidden_artifact": "unsafe thing to submit"
+    "safe_bundle": "redacted public evidence bundle",
+    "forbidden_bundle": "unsafe evidence bundle",
+    "redaction_rule": "rule for public submissions"
   },
   "evidence": [
-    "The repo does not need real secrets because ..."
+    "The repo uses toy public artifacts, so explain why secrets are unnecessary."
   ]
 }
 ```

@@ -28,12 +28,15 @@ Each mission file has this shape:
   "participant_id": "AIEX-YOUR-TEAM",
   "mission_id": "mission-01",
   "answer": {
-    "shap_scope": "one model prediction",
-    "opik_scope": "one AI app trace"
+    "triage": {
+      "loan_case_debug": "tool or review mode",
+      "support_bot_wrong_answer": "tool or review mode",
+      "leakage_feature_audit": "tool or review mode"
+    },
+    "shared_failure_mode": "one sentence explaining what the failures have in common"
   },
   "evidence": [
-    "SHAP is useful when the model prediction is wrong because it shows which features pushed the score.",
-    "Opik is useful when the AI app answer is wrong because the trace shows retrieval, prompt, and output steps."
+    "Use artifact-specific evidence. For example, distinguish prediction evidence from trace evidence and name the part of the system you inspected."
   ]
 }
 ```

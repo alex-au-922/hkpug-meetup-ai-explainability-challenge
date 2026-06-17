@@ -33,15 +33,15 @@ Opik-style thinking.
 
 | Mission | Topic | What you practice |
 |---|---|---|
-| 01 | SHAP vs Opik | Separating model explanation from app observability |
-| 02 | Global SHAP | Reading average feature importance |
-| 03 | Local SHAP | Explaining one wrong prediction |
-| 04 | Data leakage trap | Recognizing a suspicious feature |
-| 05 | Model incident note | Turning an explanation into an action plan |
-| 06 | Opik trace reading | Finding the broken step in an AI request |
-| 07 | Evaluation dataset | Turning a failure into a repeatable test |
-| 08 | Before/after traces | Comparing evidence before and after a fix |
-| 09 | Safe boundary | Submitting useful evidence without leaking secrets |
+| 01 | Tool triage | Assigning three debugging jobs to the right evidence workflow |
+| 02 | Global SHAP ranking | Ranking features, calculating a margin, and flagging review risk |
+| 03 | Local SHAP force balance | Calculating the push-pull movement for one wrong prediction |
+| 04 | Leakage audit | Rejecting a future-data feature and proposing mitigation |
+| 05 | Model incident note | Turning local SHAP and leakage evidence into an action plan |
+| 06 | Opik trace diagnosis | Finding the first bad span and citing failed evaluator scores |
+| 07 | Evaluation gate | Turning a failed trace into a regression gate with thresholds |
+| 08 | Before/after traces | Quantifying improvement with trace IDs and score deltas |
+| 09 | Safe evidence bundle | Submitting useful public evidence without leaking secrets |
 | 10 | Capstone evidence synthesis | Combining SHAP, Opik, safety, and action planning |
 
 ## How To Write A Good Answer

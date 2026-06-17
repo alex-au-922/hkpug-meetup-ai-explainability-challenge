@@ -1,4 +1,4 @@
-# Mission 07: Turn A Failure Into An Evaluation
+# Mission 07: Design A Regression Evaluation Gate
 
 ## Learning Objective
 
@@ -102,11 +102,15 @@ context relevance is a strong metric to watch.
 Do not forget the dataset item name. This mission is about turning a trace into
 a repeatable case.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer names `weather-refund-policy`, chooses `context_relevance` or
-`answer_correctness`, and describes a rule such as "fail the regression test if
-the score drops below the accepted threshold."
+A complete evaluation gate does five things:
+
+1. Names the dataset item that preserves the failure.
+2. Saves the user input pattern that triggered the bug.
+3. Describes the expected context for a correct retrieval.
+4. Sets thresholds for both context relevance and answer correctness.
+5. States what the pipeline should do when the gate fails.
 
 ## Submit
 
@@ -116,8 +120,10 @@ the score drops below the accepted threshold."
   "mission_id": "mission-07",
   "answer": {
     "dataset_item": "item-name-here",
-    "metric_to_watch": "metric-name-here",
-    "regression_rule": "what should happen if the score drops?"
+    "saved_input": "the user question or stable input pattern",
+    "expected_context": "what kind of context should be retrieved",
+    "quality_gate": "thresholds for the metrics",
+    "regression_action": "what should happen if the gate fails?"
   },
   "evidence": [
     "The trace becomes a repeatable test because ..."

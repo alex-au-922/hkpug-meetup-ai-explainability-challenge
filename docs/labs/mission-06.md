@@ -1,4 +1,4 @@
-# Mission 06: Read An Opik-Style Trace
+# Mission 06: Diagnose The First Bad Span In A Trace
 
 ## Learning Objective
 
@@ -105,11 +105,15 @@ Do not say the bad step is "the whole AI." That is too vague to fix.
 Do not ignore evaluator scores. A trace diagnosis is stronger when the scores
 support your reading.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer names `trace-003`, identifies `retrieval` as the bad step, and
-uses `context_relevance` as the failed metric. The evidence should say that the
-model got irrelevant or wrong context before answering.
+A complete trace diagnosis does five things:
+
+1. Names the failing trace.
+2. States the user intent.
+3. Identifies the first bad span, not only the final answer.
+4. Describes the irrelevant context that entered the request.
+5. Cites both low evaluator scores.
 
 ## Submit
 
@@ -119,8 +123,10 @@ model got irrelevant or wrong context before answering.
   "mission_id": "mission-06",
   "answer": {
     "failing_trace_id": "trace-id-here",
-    "bad_step": "step-name-here",
-    "failed_metric": "metric-name-here"
+    "user_intent": "what the user was asking for",
+    "first_bad_span": "span-name-here",
+    "bad_context": "what irrelevant context was retrieved",
+    "failed_scores": "metric names and values"
   },
   "evidence": [
     "The trace failed because the model got the wrong context before answering."

@@ -2,10 +2,13 @@
   "participant_id": "AIEX-CT-ALEX-AU",
   "mission_id": "mission-04",
   "answer": {
-    "suspicious_feature": "post_approval_call_count",
-    "trap_type": "data leakage from future data"
+    "rejected_feature": "post_approval_call_count",
+    "trap_type": "data leakage from future data",
+    "availability_test": "Reject the feature if it is only known after the approval decision.",
+    "safe_comparison_feature": "employment_months",
+    "mitigation": "remove post_approval_call_count, retrain the model, and audit all features for decision-time availability"
   },
   "evidence": [
-    "post_approval_call_count is suspicious because it is only known after the approval decision, so the model would be peeking into future process data."
+    "post_approval_call_count is future data because it is created after the approval decision and follow-up process. A model used during approval cannot use facts from after approval. employment_months is a safer comparison because it can be known before the decision."
   ]
 }

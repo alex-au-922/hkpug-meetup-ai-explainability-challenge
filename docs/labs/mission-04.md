@@ -1,4 +1,4 @@
-# Mission 04: Spot A SHAP Trap
+# Mission 04: Audit A Feature For Decision-Time Leakage
 
 ## Learning Objective
 
@@ -93,11 +93,15 @@ information.
 Do not propose "keep it because it improves score." Leakage can improve a test
 score while making the model invalid.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer names `post_approval_call_count`, identifies the trap as data
-leakage or future data, and explains that the feature is known after the
-decision rather than before it.
+A complete answer does five things:
+
+1. Rejects the feature that fails the timing test.
+2. Names the trap type.
+3. Explains the availability test in plain English.
+4. Names a comparison feature that is available before the decision.
+5. Proposes a mitigation plan that would make the model review actionable.
 
 ## Submit
 
@@ -106,11 +110,14 @@ decision rather than before it.
   "participant_id": "AIEX-YOUR-TEAM",
   "mission_id": "mission-04",
   "answer": {
-    "suspicious_feature": "feature_name_here",
-    "trap_type": "trap_name_here"
+    "rejected_feature": "feature_name_here",
+    "trap_type": "trap_name_here",
+    "availability_test": "how you know whether the feature is available at decision time",
+    "safe_comparison_feature": "one feature that can be known before the decision",
+    "mitigation": "what should the team do next?"
   },
   "evidence": [
-    "This feature is suspicious because it is known after the decision, not before it."
+    "Explain the future-data problem using the artifact."
   ]
 }
 ```

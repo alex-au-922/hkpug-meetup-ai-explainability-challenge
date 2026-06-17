@@ -1,4 +1,4 @@
-# Mission 08: Compare Before And After Traces
+# Mission 08: Quantify Before/After Trace Improvement
 
 ## Learning Objective
 
@@ -104,11 +104,15 @@ Do not write "the answer is better" without naming the changed component.
 
 Do not ignore the score. The score is the evidence that supports the comparison.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer names `trace-003` as before and `trace-004` as after, identifies
-retrieval routing as the changed component, and explains that context relevance
-improved from `0.22` to `0.91`.
+A complete comparison does five things:
+
+1. Names the before trace and after trace.
+2. Identifies the component that changed.
+3. Calculates the context relevance delta.
+4. Calculates the answer correctness delta.
+5. Explains why the comparison is fair because the user question stayed the same.
 
 ## Submit
 
@@ -119,10 +123,12 @@ improved from `0.22` to `0.91`.
   "answer": {
     "before_trace_id": "trace-id-here",
     "after_trace_id": "trace-id-here",
-    "changed_component": "component-name-here"
+    "changed_component": "component-name-here",
+    "context_relevance_delta": "after minus before",
+    "answer_correctness_delta": "after minus before"
   },
   "evidence": [
-    "The context relevance score improved from ... to ... after ..."
+    "Compare the same question across both traces and cite the score movement."
   ]
 }
 ```

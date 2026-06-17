@@ -56,14 +56,22 @@ def test_missing_mission_is_reported(tmp_path: Path) -> None:
         "participant_id": "AIEX-TINY",
         "mission_id": "mission-01",
         "answer": {
-            "shap_scope": "model prediction",
-            "opik_scope": "llm trace",
+            "triage": {
+                "loan_case_debug": "SHAP",
+                "support_bot_wrong_answer": "Opik",
+                "leakage_feature_audit": "SHAP model review",
+            },
+            "shared_failure_mode": (
+                "Both jobs start with a wrong output and need evidence to show "
+                "where the failure happened."
+            ),
         },
         "evidence": [
-            "SHAP helps because prediction debugging needs feature "
-            "contribution evidence.",
-            "Opik helps when the AI answer is wrong because the trace shows "
-            "pipeline failure.",
+            "A loan prediction needs feature-contribution evidence, so SHAP is "
+            "the right debugging lens for checking which inputs moved the "
+            "model score. A support-bot failure needs trace evidence because "
+            "the bug might come from retrieval, prompting, model output, or "
+            "a later evaluation step.",
         ],
     }
     (participant_dir / "mission-01.json").write_text(
@@ -76,6 +84,28 @@ def test_missing_mission_is_reported(tmp_path: Path) -> None:
     assert result.points == 10
     assert result.max_points == 100
     assert result.missions[1].errors == ("missing mission-02.json",)
+
+
+def test_old_keyword_only_mission_one_answer_is_not_full_credit() -> None:
+    shallow_payload = {
+        "participant_id": "AIEX-TINY",
+        "mission_id": "mission-01",
+        "answer": {
+            "shap_scope": "one model prediction and its feature contributions",
+            "opik_scope": "one LLM/RAG/agent pipeline trace",
+        },
+        "evidence": [
+            "SHAP helps when a model prediction is wrong because it shows "
+            "which features pushed the score up or down.",
+            "Opik helps when an AI app answer is wrong because the trace shows "
+            "retrieval, prompt, tool, and model steps.",
+        ],
+    }
+
+    result = score_mission(RUBRIC_BY_ID["mission-01"], shallow_payload)
+
+    assert result.points < result.max_points
+    assert result.points == 2
 
 
 def test_capstone_requires_cross_artifact_evidence() -> None:

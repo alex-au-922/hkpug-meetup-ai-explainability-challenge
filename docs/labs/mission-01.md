@@ -1,4 +1,4 @@
-# Mission 01: SHAP vs Opik
+# Mission 01: Triage SHAP vs Opik Debugging Jobs
 
 ## Learning Objective
 
@@ -49,7 +49,15 @@ question is not "which tabular feature moved this prediction?" The question is
 
 ## Guided Thinking
 
-Ask yourself two questions:
+You are given three debugging jobs:
+
+| Job | What is broken? | Evidence you should look for |
+|---|---|---|
+| Loan case debugging | A tabular model prediction looks wrong | Feature contributions for one prediction |
+| Support-bot wrong answer | A RAG app answered the wrong question | Request trace, retrieved context, model output, evaluator scores |
+| Leakage feature audit | A feature may not be available at decision time | Feature definition, timing, and model-review evidence |
+
+For each job, ask yourself two questions:
 
 1. Am I explaining a prediction made by a model?
 2. Am I inspecting the path taken by an LLM, RAG, or agent request?
@@ -82,13 +90,17 @@ but it is not the feature-contribution tool for the loan-risk model.
 Do not say "SHAP traces the app." SHAP explains model output. A trace is the
 Opik-side object.
 
-## What A Good Answer Looks Like
+## Scored Questions
 
-A good answer has one sentence for SHAP and one sentence for Opik. Each sentence
-should include the object being inspected.
+Your answer is not just "SHAP and Opik." You must classify all three jobs and
+explain the shared failure pattern.
 
-For SHAP, mention `prediction`, `model output`, or `feature contribution`.
-For Opik, mention `trace`, `pipeline`, `LLM`, `RAG`, or `agent`.
+Answer these questions:
+
+1. Which workflow would you use for the loan case, and why?
+2. Which workflow would you use for the support-bot wrong answer, and why?
+3. Which workflow would you use for the leakage feature audit, and why?
+4. What do the cases have in common beyond the tool names?
 
 ## Submit
 
@@ -105,12 +117,15 @@ Example shape:
   "participant_id": "AIEX-YOUR-TEAM",
   "mission_id": "mission-01",
   "answer": {
-    "shap_scope": "one model prediction and its feature contributions",
-    "opik_scope": "one LLM/RAG/agent pipeline trace"
+    "triage": {
+      "loan_case_debug": "tool or review mode",
+      "support_bot_wrong_answer": "tool or review mode",
+      "leakage_feature_audit": "tool or review mode"
+    },
+    "shared_failure_mode": "what the failures have in common"
   },
   "evidence": [
-    "SHAP helps when a model prediction is wrong because it shows which features pushed the score up or down.",
-    "Opik helps when an AI app answer is wrong because the trace shows retrieval, prompt, tool, and model steps."
+    "Explain the prediction evidence and the trace evidence in your own words."
   ]
 }
 ```
