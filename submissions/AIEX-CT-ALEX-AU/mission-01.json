@@ -2,11 +2,14 @@
   "participant_id": "AIEX-CT-ALEX-AU",
   "mission_id": "mission-01",
   "answer": {
-    "shap_scope": "one model prediction and the feature contribution behind that prediction",
-    "opik_scope": "one LLM/RAG/agent pipeline trace showing retrieval, prompt, model, and evaluation steps"
+    "triage": {
+      "loan_case_debug": "SHAP",
+      "support_bot_wrong_answer": "Opik",
+      "leakage_feature_audit": "SHAP model review"
+    },
+    "shared_failure_mode": "Both jobs start with a wrong outcome and need evidence, but the evidence lives in different places."
   },
   "evidence": [
-    "SHAP helps when a model prediction is wrong because it shows which features pushed the score up or down for that row.",
-    "Opik helps when an AI app answer is wrong because the trace shows whether retrieval, prompt, tool, or model steps failed."
+    "The loan case is a model prediction problem, so the relevant evidence is feature contribution for a row. The support bot failure is a request path problem, so the relevant evidence is the trace of retrieval, prompt, model output, and evaluator scores."
   ]
 }

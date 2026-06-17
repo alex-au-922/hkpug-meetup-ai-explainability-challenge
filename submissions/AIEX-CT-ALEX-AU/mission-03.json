@@ -3,17 +3,12 @@
   "mission_id": "mission-03",
   "answer": {
     "case_id": "C-104",
-    "pushes_risk_up": [
-      "late_payments",
-      "credit_utilization"
-    ],
-    "pushes_risk_down": [
-      "stable_income",
-      "employment_months"
-    ]
+    "strongest_positive_feature": "late_payments",
+    "strongest_negative_feature": "stable_income",
+    "net_shap_delta": "0.27",
+    "error_type": "false positive against the paid_on_time actual label"
   },
   "evidence": [
-    "For C-104, late_payments and credit_utilization pushed up the risk score with positive SHAP values.",
-    "stable_income and employment_months pushed down the risk score, but their negative values were smaller than the two risk-up forces."
+    "For C-104, the positive SHAP values are late_payments +0.24 and credit_utilization +0.18. The negative values are stable_income -0.09 and employment_months -0.06. The net force is 0.24 + 0.18 - 0.09 - 0.06 = 0.27, which moves the base probability from 0.32 to the predicted probability of 0.59 even though the actual label is paid_on_time."
   ]
 }

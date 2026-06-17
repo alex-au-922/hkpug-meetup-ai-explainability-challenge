@@ -4,9 +4,11 @@
   "answer": {
     "before_trace_id": "trace-003",
     "after_trace_id": "trace-004",
-    "changed_component": "retrieval router"
+    "changed_component": "retrieval routed to the event-policy collection",
+    "context_relevance_delta": "0.91 - 0.22 = 0.69",
+    "answer_correctness_delta": "0.86 - 0.08 = 0.78"
   },
   "evidence": [
-    "trace-003 to trace-004 improved because the retrieval router moved from general venue documents to event-policy documents, and context relevance moved from 0.22 to 0.91."
+    "trace-003 and trace-004 use the same question about typhoon signal 8 refunds, so the comparison controls for the input. trace-003 retrieved venue Wi-Fi context, while trace-004 retrieved event-policy material. The context relevance score improved by 0.69 and the answer correctness score improved by 0.78."
   ]
 }
