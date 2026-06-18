@@ -10,6 +10,8 @@ identify which features usually move the model output the most.
 
 ![Mission 02 infographic](../assets/mission-graphics/mission-02.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-02"></div>
+
 ## Artifact
 
 ```text

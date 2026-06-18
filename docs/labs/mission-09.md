@@ -8,6 +8,8 @@ private information if people are careless.
 
 ![Mission 09 infographic](../assets/mission-graphics/mission-09.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-09"></div>
+
 ## Artifact
 
 ```text

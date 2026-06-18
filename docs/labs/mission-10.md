@@ -21,6 +21,8 @@ This is intentionally harder than the earlier missions. A short answer with
 
 ![Mission 10 infographic](../assets/mission-graphics/mission-10.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-10"></div>
+
 ## Artifacts
 
 ```text

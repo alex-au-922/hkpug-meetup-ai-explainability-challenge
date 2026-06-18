@@ -11,6 +11,8 @@ job is to explain why the model behaved that way.
 
 ![Mission 03 infographic](../assets/mission-graphics/mission-03.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-03"></div>
+
 ## Artifact
 
 ```text

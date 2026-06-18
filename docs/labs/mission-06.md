@@ -11,6 +11,8 @@ evidence."
 
 ![Mission 06 infographic](../assets/mission-graphics/mission-06.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-06"></div>
+
 ## Artifact
 
 ```text

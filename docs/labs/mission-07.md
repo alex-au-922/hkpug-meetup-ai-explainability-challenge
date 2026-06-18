@@ -8,6 +8,8 @@ you check whether the same thing goes wrong again.
 
 ![Mission 07 infographic](../assets/mission-graphics/mission-07.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-07"></div>
+
 ## Artifact
 
 ```text

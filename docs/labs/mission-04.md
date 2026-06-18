@@ -8,6 +8,8 @@ need to decide whether that feature is valid and safe to use.
 
 ![Mission 04 infographic](../assets/mission-graphics/mission-04.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-04"></div>
+
 ## Artifact
 
 ```text

@@ -13,6 +13,8 @@ systems, but they answer different questions.
 
 ![Mission 01 infographic](../assets/mission-graphics/mission-01.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-01"></div>
+
 ## Background
 
 SHAP is most useful when you already have a model prediction and want to know

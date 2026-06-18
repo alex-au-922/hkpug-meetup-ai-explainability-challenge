@@ -8,6 +8,8 @@ trace, an after trace, and a score movement.
 
 ![Mission 08 infographic](../assets/mission-graphics/mission-08.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-08"></div>
+
 ## Artifact
 
 ```text

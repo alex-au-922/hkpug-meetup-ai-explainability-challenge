@@ -8,6 +8,8 @@ chart.
 
 ![Mission 05 infographic](../assets/mission-graphics/mission-05.svg){ .mission-infographic }
 
+<div class="mission-widget" data-mission-widget="mission-05"></div>
+
 ## Artifact
 
 ```text
