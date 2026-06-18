@@ -86,6 +86,21 @@ The score is not the real prize. The score is a feedback loop. If the action
 says your answer is incomplete, it usually means your evidence is too vague or
 you pointed at the wrong part of the artifact.
 
+## Try The Interactive Labs
+
+The challenge includes two embedded exercises you can use before submitting
+mission answers:
+
+- [SHAP force playground](interactive-labs.md#shap-force-playground): move
+  feature controls and watch the prediction and contribution bars change.
+- [Opik trace terminal](interactive-labs.md#opik-trace-terminal): run trace
+  commands, inspect bad spans, compare before/after traces, and read evaluator
+  gates.
+
+These labs are not separate software. They are embedded directly inside the
+tutorial HTML, so participants can use them from the browser while reading the
+textbook.
+
 ## What You Will Submit
 
 You will submit files like:
@@ -132,6 +147,7 @@ evidence means.
 
 1. Read [Rules](rules.md).
 2. Read [How To Play](working-format.md).
-3. Read [SHAP for Humans](shap-for-humans.md).
-4. Read [Opik for Humans](opik-for-humans.md).
-5. Start [Mission 01](labs/mission-01.md).
+3. Open [Interactive Labs](interactive-labs.md).
+4. Read [SHAP for Humans](shap-for-humans.md).
+5. Read [Opik for Humans](opik-for-humans.md).
+6. Start [Mission 01](labs/mission-01.md).

@@ -40,6 +40,7 @@ nav:
   - Start: index.md
   - Rules: rules.md
   - How To Play: working-format.md
+  - Interactive Labs: interactive-labs.md
   - SHAP for Humans: shap-for-humans.md
   - Opik for Humans: opik-for-humans.md
   - Missions:
