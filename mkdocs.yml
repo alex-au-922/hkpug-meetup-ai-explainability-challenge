@@ -19,6 +19,9 @@ theme:
 extra_css:
   - styles/challenge.css
 
+extra_javascript:
+  - assets/interactive.js
+
 markdown_extensions:
   - admonition
   - attr_list

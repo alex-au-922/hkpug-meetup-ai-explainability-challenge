@@ -80,14 +80,42 @@ Consider a small event support bot. The user asks:
 
 A RAG-style app might handle the question like this:
 
-```mermaid
-flowchart LR
-  User["User asks refund question"] --> Retrieval["Retriever searches documents"]
-  Retrieval --> Prompt["Prompt is assembled with context"]
-  Prompt --> Model["LLM writes answer"]
-  Model --> Eval["Evaluator scores answer"]
-  Eval --> Trace["Trace saved for inspection"]
-```
+<div class="interactive-lab" data-opik-terminal>
+  <div class="interactive-lab__header">
+    <div>
+      <strong>Opik trace terminal</strong>
+      <span>Run trace commands to inspect the request path.</span>
+    </div>
+    <div class="scenario-row" aria-label="Trace selector">
+      <button type="button" class="lab-button" data-trace-id="trace-003">trace-003</button>
+      <button type="button" class="lab-button" data-trace-id="trace-004">trace-004</button>
+    </div>
+  </div>
+  <div class="interactive-grid">
+    <div class="trace-panel">
+      <div class="trace-summary">
+        <span class="trace-pill" data-trace-status>bad_context</span>
+        <strong data-trace-title>trace-003</strong>
+        <p data-trace-input>If typhoon signal 8 happens, can I get a refund?</p>
+      </div>
+      <div class="trace-spans" data-trace-spans></div>
+    </div>
+    <div class="terminal-panel">
+      <pre class="interactive-terminal" data-terminal-output></pre>
+      <form class="terminal-command" data-terminal-form>
+        <span>$</span>
+        <input type="text" value="help" aria-label="Trace command" data-terminal-input>
+        <button type="submit" class="lab-button">Run</button>
+      </form>
+      <div class="command-row" aria-label="Command shortcuts">
+        <button type="button" class="lab-button" data-command="trace trace-003">trace 003</button>
+        <button type="button" class="lab-button" data-command="bad-span">bad span</button>
+        <button type="button" class="lab-button" data-command="compare">compare</button>
+        <button type="button" class="lab-button" data-command="gate">gate</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 If the app answers with Wi-Fi instructions, the model output is wrong. But the
 trace helps us ask a sharper question:

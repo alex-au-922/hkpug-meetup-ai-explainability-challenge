@@ -109,6 +109,63 @@ A plain-English explanation would be:
 That is the style of explanation we want in the missions. Do not merely copy
 numbers. Explain the direction and the conclusion.
 
+### Try The SHAP Playground
+
+Change the applicant profile below. Watch how each feature contribution moves
+the final risk score.
+
+<div class="interactive-lab" data-shap-lab>
+  <div class="interactive-lab__header">
+    <div>
+      <strong>SHAP force playground</strong>
+      <span>Move the controls to see the prediction update.</span>
+    </div>
+    <div class="scenario-row" aria-label="Example scenarios">
+      <button type="button" class="lab-button" data-scenario="c104">C-104</button>
+      <button type="button" class="lab-button" data-scenario="steady">Steady</button>
+      <button type="button" class="lab-button" data-scenario="stressed">Stressed</button>
+    </div>
+  </div>
+  <div class="interactive-grid">
+    <div class="control-stack">
+      <label class="lab-control">
+        <span>Late payments</span>
+        <input type="range" min="0" max="4" step="1" value="2" data-shap-input="latePayments">
+        <output data-shap-output="latePayments">2</output>
+      </label>
+      <label class="lab-control">
+        <span>Credit utilization</span>
+        <input type="range" min="10" max="100" step="1" value="91" data-shap-input="creditUtilization">
+        <output data-shap-output="creditUtilization">91%</output>
+      </label>
+      <label class="lab-control">
+        <span>Employment months</span>
+        <input type="range" min="0" max="72" step="3" value="39" data-shap-input="employmentMonths">
+        <output data-shap-output="employmentMonths">39</output>
+      </label>
+      <label class="lab-checkbox">
+        <input type="checkbox" checked data-shap-input="stableIncome">
+        <span>Stable income</span>
+      </label>
+    </div>
+    <div class="interactive-output">
+      <div class="score-meter" aria-label="Predicted risk">
+        <div class="score-readout">
+          <span>Predicted risk</span>
+          <strong data-shap-prediction>0.59</strong>
+          <em data-shap-verdict>late_repayment_risk</em>
+        </div>
+        <div class="score-meter__bar"><span data-shap-meter></span></div>
+        <div class="score-meter__labels">
+          <span>Base 0.32</span>
+        </div>
+      </div>
+      <div class="shap-bars" data-shap-bars></div>
+      <pre class="interactive-terminal" data-shap-terminal></pre>
+    </div>
+  </div>
+</div>
+
 ## 1.5 Global vs Local SHAP
 
 There are two common ways to use SHAP.
