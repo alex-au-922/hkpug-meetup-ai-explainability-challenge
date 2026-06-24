@@ -1,0 +1,27 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-10",
+  "answer": {
+    "incident_type": "retrieval context mismatch",
+    "shap_case_id": "C-104",
+    "shap_risk_up_features": [
+      "late_payments",
+      "credit_utilization"
+    ],
+    "shap_risk_down_features": [
+      "stable_income",
+      "employment_months"
+    ],
+    "leakage_feature": "post_approval_call_count",
+    "failing_trace_id": "trace-003",
+    "fixed_trace_id": "trace-004",
+    "failed_component": "retrieval",
+    "metric_shift": "context_relevance improved from 0.22 in trace-003 to 0.91 in trace-004",
+    "regression_dataset_item": "weather-refund-policy",
+    "safe_evidence_boundary": "Submit redacted trace IDs, scores, and short diagnoses, with no secrets or private user data.",
+    "next_action": "remove the leaking loan feature, retrain the loan model, add test coverage for weather-refund-policy, and monitor context_relevance"
+  },
+  "evidence": [
+    "This incident has two evidence threads that must not be blended. On the model side, case C-104 was predicted as late_repayment_risk even though the actual label was paid_on_time. SHAP shows late_payments and credit_utilization pushing risk up, while stable_income and employment_months push risk down. The feature audit also flags post_approval_call_count as leakage because it is only known after the decision. On the LLM app side, trace-003 failed because retrieval returned venue Wi-Fi context for a typhoon refund question, producing context_relevance 0.22. The fixed trace-004 used event-policy context and raised context_relevance to 0.91. The safe public evidence is redacted IDs, scores, and diagnosis text, not secrets. The action plan is to remove and retrain the leaking model feature, keep weather-refund-policy as a regression dataset item, and monitor retrieval quality."
+  ]
+}

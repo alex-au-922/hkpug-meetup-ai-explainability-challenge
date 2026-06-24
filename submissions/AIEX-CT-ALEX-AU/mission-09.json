@@ -1,0 +1,12 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-09",
+  "answer": {
+    "safe_bundle": "redacted trace IDs, evaluator scores, and plain-English diagnosis",
+    "forbidden_bundle": "API keys, private user messages, access tokens, credentials, and personal data",
+    "redaction_rule": "A public submission needs no secret; use only toy artifact references and summaries."
+  },
+  "evidence": [
+    "The public repo uses toy artifacts, so a safe evidence bundle can include redacted trace IDs, evaluator scores, and a plain-English diagnosis. It should not contain private production data, API keys, access tokens, credentials, personal data, or raw user messages."
+  ]
+}

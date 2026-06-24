@@ -1,0 +1,14 @@
+{
+  "participant_id": "AIEX-CT-ALEX-AU",
+  "mission_id": "mission-07",
+  "answer": {
+    "dataset_item": "weather-refund-policy",
+    "saved_input": "If typhoon signal 8 happens, can I get a refund?",
+    "expected_context": "weather policy, cancellation notice policy, and refund handling notes",
+    "quality_gate": "pass only if context_relevance is at least 0.85 and answer_correctness is at least 0.80",
+    "regression_action": "fail or block the regression run if either score drops below the gate"
+  },
+  "evidence": [
+    "The failing trace should become a repeatable dataset test so future prompt or retrieval changes cannot silently bring the same bad answer back."
+  ]
+}
